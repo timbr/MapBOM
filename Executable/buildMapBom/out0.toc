@@ -1,7 +1,7 @@
 (['C:\\Python25\\pyinstaller-1.3\\support\\_mountzlib.py',
   'C:\\Python25\\pyinstaller-1.3\\support\\useUnicode.py',
   'MapBom.py'],
- ['C:\\Python25\\tim\\MapBOM'],
+ ['C:\\Python25\\tim\\GoodScripts\\MapBOM'],
  None,
  None,
  [('_mountzlib', 'C:\\Python25\\pyinstaller-1.3\\support\\_mountzlib.py', 'PYSOURCE'), ('useUnicode', 'C:\\Python25\\pyinstaller-1.3\\support\\useUnicode.py', 'PYSOURCE'), ('MapBom', 'MapBom.py', 'PYSOURCE')],

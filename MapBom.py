@@ -8,7 +8,7 @@
 # Created:     21/10/2009
 #
 # Changes:     0.2.1: Development branch to investigate using SELECT IN statements
-#                     0.2: Modified SQL query to include INVIA part numbers
+#                     0.2: Modified SQL query to include INVIA part numbers [now irrelevant]
 #-------------------------------------------------------------------------------
 
 from tim_modules import pysyteline
@@ -17,7 +17,7 @@ import os
 import datetime
 import getopt, sys
 
-
+__VERSION__ = '0.2.1'
 
 namedata={}
 matdata={}
@@ -26,7 +26,7 @@ matdata={}
 def usage():
     sys.stderr.write("""
   -------------------------------------------------------
-  BomMap 0.2.1 - Create a BOM map
+  MapBom %s - Create a BOM map
   -------------------------------------------------------
   Tim Browning 21/10/2009
 
@@ -35,7 +35,7 @@ def usage():
 
   Requires Freemind.
 
-""" % (sys.argv[0], ))
+""" % (__VERSION__, sys.argv[0], ))
 
 
 def query(in_list):
@@ -132,6 +132,8 @@ if __name__ == '__main__':
         if outputfile[-3:] != ".mm":
             outputfile+=".mm"
     else:
+        print "MapBOM version %s" % __VERSION__
+        print "\n"
         print "Enter all or part of the top level assembly number:"
         part = raw_input()
         outputfile = "BOMmindmap.mm"

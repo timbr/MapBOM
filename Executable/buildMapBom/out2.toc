@@ -1,8 +1,8 @@
-('C:\\Python25\\tim\\MapBOM\\Executable\\MapBom.exe',
+('C:\\Python25\\tim\\GoodScripts\\MapBOM\\Executable\\MapBom.exe',
  True,
  False,
  'mapbom.ico',
  None,
  False,
  False,
- 1248963963)
+ 1256136252)
