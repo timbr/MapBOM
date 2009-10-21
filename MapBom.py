@@ -54,7 +54,7 @@ def query(in_list):
 
 def CreateDictionary(part):
     if part[-1] != "'" and part[:1] != "'":
-        part = "'" + part + "'"
+        part = "'" + part + "'" # The part number needs to be in inverted commas for the SQL query
 
     result = pysyteline.runquery(query(part))
     
@@ -73,12 +73,13 @@ def CreateDictionary(part):
 
         
         children = [child.Material for child in result]
-        p_list=''
-        for t in children[:-1]:
-            p_list += "'" + str(t) + "', "
+        child_list=''
+        for child in children[:-1]: # all child parts apart from the final one
+            child_list += "'" + str(child) + "', "
             
-        p_list += "'" + children[-1] + "'"
-        CreateDictionary(p_list)
+        child_list += "'" + children[-1] + "'" # the final child in the list has no comma after it
+        
+        CreateDictionary(child_list)
 
 
 
@@ -97,14 +98,15 @@ def findchildren(part,tab):
             f.write(' FOLDED="true" >\n')
         tab+=1
         for row in result:
-            materialdesc = namedata[str(row[0])]
+            material = str(row[0])
+            materialdesc = namedata[material]
             html = string.replace(str(materialdesc), '&' , '&amp;')
             html2 = string.replace(html, '"' , '&quot;')
             quant = str(pysyteline.clean_number(row[1], 3))
             line = str(row[0]) + '  ' + html2 + '  ' + quant + '-off'
             #print line
             f.write('<node POSITION="right" TEXT="' + line + '"')
-            next = findchildren(str(row[0]),tab)
+            next = findchildren(material, tab)
             if next != 'nochild':
                 f.write('</node>\n')
     else:
