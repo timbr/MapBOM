@@ -38,34 +38,47 @@ def usage():
 """ % (sys.argv[0], ))
 
 
+def query(in_list):
+    command="""select DISTINCT 
+    rvxCurrentMaterials.Item, 
+    rvxCurrentMaterials.Description, 
+    rvxCurrentMaterials.Material, 
+    rvxCurrentMaterials.\"Material Description\" as matdesc, 
+    rvxCurrentMaterials.Quantity 
+    FROM UK_App.dbo.rvxCurrentMaterials 
+    WHERE rvxCurrentMaterials.Item in (%s) AND rvxCurrentMaterials.Material like '_-%%' 
+    ORDER BY rvxCurrentMaterials.Material""" % in_list
+    
+    return command
 
-def createdictionary():
-    command="""select DISTINCT
-    rvxCurrentMaterials.Item,
-    rvxCurrentMaterials.Description,
-    rvxCurrentMaterials.Material,
-    rvxCurrentMaterials.\"Material Description\" as matdesc,
-    rvxCurrentMaterials.Quantity
-    FROM UK_App.dbo.rvxCurrentMaterials
-    WHERE (rvxCurrentMaterials.Item like '_-%' OR rvxCurrentMaterials.Item like 'INVIA%')
-    AND rvxCurrentMaterials.Material like '_-%'
-    ORDER BY rvxCurrentMaterials.Material
-    """
 
-    sqlresult = pysyteline.runquery(command)
-    print 'Creating names dictionary...'
-    for row in sqlresult:
-        if row.Item not in namedata:
-            namedata[row.Item] = row.Description
-        if row.Material not in namedata:
-            namedata[row.Material] = row.matdesc
+def CreateDictionary(part):
+    if part[-1] != "'" and part[:1] != "'":
+        part = "'" + part + "'"
 
-    print 'Creating material dictionary...'
-    for row in sqlresult:
-        if row.Item not in matdata:
-            matdata[row.Item] = [[row.Material, row.Quantity]]
-        else:
-            matdata[row.Item].append([row.Material, row.Quantity])
+    result = pysyteline.runquery(query(part))
+    
+    if result != []:
+        for row in result:
+            if row.Item not in namedata:
+                namedata[row.Item] = row.Description
+            if row.Material not in namedata:
+                namedata[row.Material] = row.matdesc
+                
+        for row in result:
+            if row.Item not in matdata:
+                matdata[row.Item] = [[row.Material, row.Quantity]]
+            else:
+                matdata[row.Item].append([row.Material, row.Quantity])
+
+        
+        children = [child.Material for child in result]
+        p_list=''
+        for t in children[:-1]:
+            p_list += "'" + str(t) + "', "
+            
+        p_list += "'" + children[-1] + "'"
+        CreateDictionary(p_list)
 
 
 
@@ -74,8 +87,16 @@ def findchildren(part,tab):
         desc = namedata[part]
         timeformat = format = "%d-%m-%Y    %H:%M:%S"
         timenow = datetime.datetime.today().strftime(timeformat)
-        f.write('<node STYLE="fork" TEXT="' + part + '  ' + str(desc) + \
-                '\n        As of: ' + timenow + '">\n')
+        part_text = part + '  ' + str(desc)
+        date_text = 'As of: ' + timenow
+        padding = len(part_text) - len(date_text)
+        print padding
+        if padding < 0:
+            part_text = (" " * abs(padding)) + part_text
+        else:
+            date_text = (" " * abs(padding)) + date_text
+        print part_text +'\n' + date_text
+        f.write('<node STYLE="fork" TEXT="' + part_text + '\n' + date_text + '">\n')
         f.write('<edge WIDTH="thin"/>\n')
     if part in matdata:
         result = matdata[part]
@@ -157,7 +178,7 @@ if __name__ == '__main__':
 
     print "\nDownloading data from Syteline."
 
-    createdictionary()
+    CreateDictionary(toplevel[item_num].Item)
 
     f=open(outputfile, 'w')
     f.write('<map version="0.8.1">\n')
