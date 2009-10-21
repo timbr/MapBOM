@@ -1,11 +1,14 @@
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.1
+# Version:     0.2.1
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
-# Created:     30/07/2009
+# Created:     21/10/2009
+#
+# Changes:     0.2.1: Development branch to investigate using SELECT IN statements
+#                     0.2: Modified SQL query to include INVIA part numbers
 #-------------------------------------------------------------------------------
 
 from tim_modules import pysyteline
@@ -23,9 +26,9 @@ matdata={}
 def usage():
     sys.stderr.write("""
   -------------------------------------------------------
-  BomMap - Create a BOM map
+  BomMap 0.2.1 - Create a BOM map
   -------------------------------------------------------
-  Tim Browning 29/07/2009
+  Tim Browning 21/10/2009
 
 
   USAGE: %s <Top Assembly Number> [outputfile]
@@ -44,7 +47,8 @@ def createdictionary():
     rvxCurrentMaterials.\"Material Description\" as matdesc,
     rvxCurrentMaterials.Quantity
     FROM UK_App.dbo.rvxCurrentMaterials
-    WHERE rvxCurrentMaterials.Item like '_-%' AND rvxCurrentMaterials.Material like '_-%'
+    WHERE (rvxCurrentMaterials.Item like '_-%' OR rvxCurrentMaterials.Item like 'INVIA%')
+    AND rvxCurrentMaterials.Material like '_-%'
     ORDER BY rvxCurrentMaterials.Material
     """
 
