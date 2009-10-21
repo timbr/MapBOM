@@ -89,13 +89,6 @@ def findchildren(part,tab):
         timenow = datetime.datetime.today().strftime(timeformat)
         part_text = part + '  ' + str(desc)
         date_text = 'As of: ' + timenow
-        padding = len(part_text) - len(date_text)
-        print padding
-        if padding < 0:
-            part_text = (" " * abs(padding)) + part_text
-        else:
-            date_text = (" " * abs(padding)) + date_text
-        print part_text +'\n' + date_text
         f.write('<node STYLE="fork" TEXT="' + part_text + '\n' + date_text + '">\n')
         f.write('<edge WIDTH="thin"/>\n')
     if part in matdata:
