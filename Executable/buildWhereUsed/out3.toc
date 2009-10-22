@@ -1,0 +1,11 @@
+('C:\\Python25\\tim\\GoodScripts\\MapBOM\\Executable\\buildWhereUsed\\out3.pkg',
+ {'BINARY': 1,
+  'DATA': 1,
+  'EXECUTABLE': 1,
+  'EXTENSION': 1,
+  'PYMODULE': 1,
+  'PYSOURCE': 1},
+ [('out1.pyz', 'C:\\Python25\\tim\\GoodScripts\\MapBOM\\Executable\\buildWhereUsed\\out1.pyz', 'PYZ'), ('iu', 'C:\\Python25\\pyinstaller-1.3\\iu.pyc', 'PYMODULE'), ('struct', 'C:\\Python25\\lib\\struct.pyc', 'PYMODULE'), ('archive', 'C:\\Python25\\pyinstaller-1.3\\archive.pyc', 'PYMODULE'), ('_mountzlib', 'C:\\Python25\\pyinstaller-1.3\\support\\_mountzlib.py', 'PYSOURCE'), ('useUnicode', 'C:\\Python25\\pyinstaller-1.3\\support\\useUnicode.py', 'PYSOURCE'), ('WhereUsed', 'WhereUsed.py', 'PYSOURCE'), ('pyodbc', 'C:\\Python25\\lib\\site-packages\\pyodbc.pyd', 'EXTENSION'), ('_ctypes', 'C:\\Python25\\DLLs\\_ctypes.pyd', 'EXTENSION'), ('unicodedata', 'C:\\Python25\\DLLs\\unicodedata.pyd', 'EXTENSION'), ('bz2', 'C:\\Python25\\DLLs\\bz2.pyd', 'EXTENSION'), ('_ssl', 'C:\\Python25\\DLLs\\_ssl.pyd', 'EXTENSION'), ('win32api', 'C:\\Python25\\lib\\site-packages\\win32\\win32api.pyd', 'EXTENSION'), ('_socket', 'C:\\Python25\\DLLs\\_socket.pyd', 'EXTENSION'), ('python25.dll', 'C:\\Windows\\system32\\python25.dll', 'BINARY'), ('MSVCR71.dll', 'C:\\Windows\\system32\\MSVCR71.dll', 'BINARY'), ('pywintypes25.dll', 'C:\\Windows\\system32\\pywintypes25.dll', 'BINARY')],
+ 0,
+ False,
+ False)

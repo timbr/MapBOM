@@ -1,0 +1,8 @@
+('C:\\Python25\\tim\\GoodScripts\\MapBOM\\Executable\\WhereUsed.exe',
+ True,
+ False,
+ 'whereused.ico',
+ None,
+ False,
+ False,
+ 1256194810)
