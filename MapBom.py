@@ -1,13 +1,14 @@
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.2.3
+# Version:     0.2.4
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
 # Created:     03/12/2009
 #
-# Changes:       0.2.3: Checks to see if Yaml file can be found. If not then uses a local copy
+# Changes:    0.2.4: If quantity is A/R then this is printed instead of error-off
+#                     0.2.3: Checks to see if Yaml file can be found. If not then uses a local copy
 #                     0.2.2: Added Yaml file containing Ireland BOMs
 #                     0.2.1: Development branch to investigate using SELECT IN statements
 #                     0.2: Modified SQL query to include INVIA part numbers [now irrelevant]
@@ -20,7 +21,7 @@ import datetime
 import getopt, sys
 import yaml
 
-__VERSION__ = '0.2.3'
+__VERSION__ = '0.2.4'
 
 namedata={}
 matdata={}
@@ -96,12 +97,16 @@ def AddIrelandParts():
     for assy in yaml.load_all(yamldata):
         namedata[assy['Assembly']] = assy['Description'] + Ire_prefix
         for part in assy['Items']:
+            if part['Qty'] == 'A/R':
+                qty = '999.999'
+            else:
+                qty = part['Qty']
             if part['Part Number'] not in namedata:
                 namedata[part['Part Number']] = part['Description']
             if assy['Assembly'] not in matdata:
-                matdata[assy['Assembly']] = [[part['Part Number'], part['Qty']]]
+                matdata[assy['Assembly']] = [[part['Part Number'], qty]]
             else:
-                matdata[assy['Assembly']].append([part['Part Number'], part['Qty']])
+                matdata[assy['Assembly']].append([part['Part Number'], qty])
 
 def findchildren(part,tab):
     if tab==-1:
@@ -123,7 +128,11 @@ def findchildren(part,tab):
             html = string.replace(str(materialdesc), '&' , '&amp;')
             html2 = string.replace(html, '"' , '&quot;')
             quant = str(pysyteline.clean_number(row[1], 3))
-            line = str(row[0]) + '  ' + html2 + '  ' + quant + '-off'
+            if quant == '999.999':
+                quant = 'A/R'
+            else:
+                quant = quant + '-off'
+            line = str(row[0]) + '  ' + html2 + '  ' + quant
             #print line
             f.write('<node POSITION="right" TEXT="' + line + '"')
             next = findchildren(material, tab)
