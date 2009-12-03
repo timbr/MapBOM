@@ -5,9 +5,10 @@
 #
 # Author:      tb126975
 #
-# Created:     21/10/2009
+# Created:     03/12/2009
 #
-# Changes:       0.2.2: Added Yaml file containing Ireland BOMs
+# Changes:       0.2.3: Checks to see if Yaml file can be found. If not then uses a local copy
+#                     0.2.2: Added Yaml file containing Ireland BOMs
 #                     0.2.1: Development branch to investigate using SELECT IN statements
 #                     0.2: Modified SQL query to include INVIA part numbers [now irrelevant]
 #-------------------------------------------------------------------------------
@@ -19,7 +20,7 @@ import datetime
 import getopt, sys
 import yaml
 
-__VERSION__ = '0.2.2'
+__VERSION__ = '0.2.3'
 
 namedata={}
 matdata={}
@@ -86,7 +87,11 @@ def CreateDictionary(part):
 def AddIrelandParts():
     Ire_prefix = " **IRE**"
     yamlfile = "\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\IrelandBOMs\\IrelandBOM.yaml"
-    yamldata = open(yamlfile, 'r').read()
+    try:
+        yamldata = open(yamlfile, 'r').read()
+    except:
+        from IrelandBOM import yamldata
+        print 'Using local copy of Ireland assembly data.'
     
     for assy in yaml.load_all(yamldata):
         namedata[assy['Assembly']] = assy['Description'] + Ire_prefix

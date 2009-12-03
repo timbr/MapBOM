@@ -1,7 +1,7 @@
 <map version="0.8.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node STYLE="fork" TEXT="A-9835-1200-02  RA801 SYSTEM ASSY
-As of: 03-12-2009    11:29:27">
+As of: 03-12-2009    11:46:51">
 <edge WIDTH="thin"/>
 <node POSITION="right" TEXT="A-9835-0963-01  EXTERNAL CABLE KIT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-9835-1171-01  1M PC TO USB CABLE **IRE**  1-off" FOLDED="true" >
@@ -582,8 +582,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="R-1012-0005  0.5mmX800mmX400mm ST STL 430BA  0.008-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0779-02  MANIPULATION HANDLE  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  35-off"/>
 <node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  300-off"/>
+<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  35-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0780-05  XY STAGE Y-DRIVE COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-WM01-0002  BAG BUBBLE 130x180  0-off"/>
@@ -636,8 +636,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-9835-0507-03  LASER SHUTTER BLADE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0521-01  LASER SHUTTER SPIGOT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
-<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  400-off"/>
 <node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  15-off"/>
+<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  400-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0524-02  LASER SHUTTER PIVOT COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
@@ -694,8 +694,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-9835-0571-04  STAGE BASE PLATE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0572-03  SLIDE PLATE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0574-04  STAGE CLAMP  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  1-off"/>
 <node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  0-off"/>
+<node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  1-off"/>
 <node POSITION="right" TEXT="R-2022-4788  4 1/2&quot; SQ AL ALLOY 6082P T6  66-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0578-04  CABLE COVER PLATE  1-off"/>
@@ -734,8 +734,8 @@ As of: 03-12-2009    11:29:27">
 </node>
 <node POSITION="right" TEXT="M-9835-0738-01  Z-STAGE GEARING SHAFT  5-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  94-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  300-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  94-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0811-01  MOTOR GEAR 15T  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-WM03-0001  BAG SELF SEALING 2.25 X 3 IN  1-off"/>
@@ -819,12 +819,12 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-9829-0245-02  MOTORISED SLIT BLADES  1-off"/>
 <node POSITION="right" TEXT="M-9829-0290-01  ROLLER CONTACT  1-off"/>
 <node POSITION="right" TEXT="M-9835-0840-01  MODIFIED ANVIL #1  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  1-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-2022-0224  3 1/2&quot; DIA AL ALLOY 6082P T6  28-off"/>
 <node POSITION="right" TEXT="T-7146  Program  0-off"/>
 <node POSITION="right" TEXT="T-7148  Program  0-off"/>
 </node>
-<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  2-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-2022-0224  3 1/2&quot; DIA AL ALLOY 6082P T6  28-off"/>
 <node POSITION="right" TEXT="T-7146  Program  0-off"/>
 <node POSITION="right" TEXT="T-7148  Program  0-off"/>
@@ -949,8 +949,8 @@ As of: 03-12-2009    11:29:27">
 </node>
 <node POSITION="right" TEXT="M-9835-0898-02  LQ LASER LOCK SHAFT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0920-01  LIGHT COVER PILLAR  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0045  Washable Toting, 50mm deep, 40 div  0-off"/>
@@ -1837,8 +1837,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-8012-1757-02  LABEL (EXPOSURE)  1-off"/>
 <node POSITION="right" TEXT="M-9835-0623-01  HPNIR MIRROR HOLDER  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
-<node POSITION="right" TEXT="R-2022-0064  1&quot; DIA AL ALLOY 6082P T6  12-off"/>
 <node POSITION="right" TEXT="R-2022-0064  1&quot; DIA AL ALLOY 6082P T6  148-off"/>
+<node POSITION="right" TEXT="R-2022-0064  1&quot; DIA AL ALLOY 6082P T6  12-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0660-01  KS05 MOUNT  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-2022-5680  2 1/2&quot; X 1/2 AL ALLOY 6082P T6  83.333-off"/>
@@ -1851,8 +1851,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-9835-0899-03  LASER LOCKING POST  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
 <node POSITION="right" TEXT="P-WM01-0001  BAG BUBBLE 100x135  1-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  94-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  300-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  94-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0931-02  LASER LIGHT TUBE  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
@@ -1928,8 +1928,8 @@ As of: 03-12-2009    11:29:27">
 <node POSITION="right" TEXT="M-9835-0852-02  CONN STRIP 1  1-off"/>
 <node POSITION="right" TEXT="M-9835-0853-03  CONN NUT  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0857-03  FRONT PANEL COVER  1-off"/>
 <node POSITION="right" TEXT="M-9835-0889-01  CONN STRIP 2  1-off"/>

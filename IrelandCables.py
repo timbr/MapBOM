@@ -6,7 +6,10 @@ matdata={}
 Ire_prefix = "  **IRE**"
 
 yamlfile = "\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\IrelandBOMs\\IrelandBOM.yaml"
-yamldata = open(yamlfile, 'r').read()
+try:
+    yamldata = open(yamlfile, 'r').read()
+except:
+    from IrelandBOM import yamldata
 
 for assy in yaml.load_all(yamldata):
     if assy['Assembly'] not in namedata:
