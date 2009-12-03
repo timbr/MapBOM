@@ -1,13 +1,14 @@
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.2.1
+# Version:     0.2.2
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
 # Created:     21/10/2009
 #
-# Changes:     0.2.1: Development branch to investigate using SELECT IN statements
+# Changes:       0.2.2: Added Yaml file containing Ireland BOMs
+#                     0.2.1: Development branch to investigate using SELECT IN statements
 #                     0.2: Modified SQL query to include INVIA part numbers [now irrelevant]
 #-------------------------------------------------------------------------------
 
@@ -16,8 +17,9 @@ import string
 import os
 import datetime
 import getopt, sys
+import yaml
 
-__VERSION__ = '0.2.1'
+__VERSION__ = '0.2.2'
 
 namedata={}
 matdata={}
@@ -81,7 +83,20 @@ def CreateDictionary(part):
         
         CreateDictionary(child_list)
 
-
+def AddIrelandParts():
+    Ire_prefix = " **IRE**"
+    yamlfile = "\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\IrelandBOMs\\IrelandBOM.yaml"
+    yamldata = open(yamlfile, 'r').read()
+    
+    for assy in yaml.load_all(yamldata):
+        namedata[assy['Assembly']] = assy['Description'] + Ire_prefix
+        for part in assy['Items']:
+            if part['Part Number'] not in namedata:
+                namedata[part['Part Number']] = part['Description']
+            if assy['Assembly'] not in matdata:
+                matdata[assy['Assembly']] = [[part['Part Number'], part['Qty']]]
+            else:
+                matdata[assy['Assembly']].append([part['Part Number'], part['Qty']])
 
 def findchildren(part,tab):
     if tab==-1:
@@ -176,6 +191,7 @@ if __name__ == '__main__':
     print "\nDownloading data from Syteline."
 
     CreateDictionary(toplevel[item_num].Item)
+    AddIrelandParts()
 
     f=open(outputfile, 'w')
     f.write('<map version="0.8.1">\n')
