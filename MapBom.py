@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.2.2
+# Version:     0.2.3
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
