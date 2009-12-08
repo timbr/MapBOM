@@ -125,7 +125,7 @@ def findchildren(part,tab):
         for row in result:
             material = str(row[0])
             materialdesc = str(namedata[material])
-            html = materialdesc.replace('&' , '&amp;').replace(html, '"' , '&quot;')
+            html = materialdesc.replace('&' , '&amp;').replace('"' , '&quot;')
             quant = str(pysyteline.clean_number(row[1], 3))
             if quant == '999.999':
                 quant = 'A/R'
