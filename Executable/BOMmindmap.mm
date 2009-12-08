@@ -1,13 +1,13 @@
 <map version="0.8.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node STYLE="fork" TEXT="A-9835-1200-02  RA801 SYSTEM ASSY
-As of: 03-12-2009    11:46:51">
+As of: 07-12-2009    11:54:58">
 <edge WIDTH="thin"/>
 <node POSITION="right" TEXT="A-9835-0963-01  EXTERNAL CABLE KIT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-9835-1171-01  1M PC TO USB CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CABS-0012-RT  CABLE USB A TO B 1 METRE  1-off"/>
 <node POSITION="right" TEXT="P-CA59-0008-RT  FERRITE CORE CLIP-ON  1-off"/>
-<node POSITION="right" TEXT="P-AD06-0001-RT  RTV 3145 SEALANT  error-off"/>
+<node POSITION="right" TEXT="P-AD06-0001-RT  RTV 3145 SEALANT  A/R"/>
 </node>
 <node POSITION="right" TEXT="P-CB01-0008-RT  STRAIGHT SOCKET TO 13A PLUG  1-off"/>
 <node POSITION="right" TEXT="P-CB01-0011-RT  STRAIGHT SOCKET TO ST/DL ENDS  1-off"/>
@@ -347,13 +347,13 @@ As of: 03-12-2009    11:46:51">
 </node>
 <node POSITION="right" TEXT="M-9803-0604-01  SPACER M4 X 21,5 LG  4-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0150  Steel basket, Coarse mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  300-off"/>
 <node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  33-off"/>
+<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9803-0605-01  FAN BAFFLE/SCREEN  1-off"/>
 <node POSITION="right" TEXT="M-9803-0606-01  CCD CAMERA PILLAR 6 DIA X 80 LG  4-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  92-off"/>
 <node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  300-off"/>
+<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  92-off"/>
 </node>
 <node POSITION="right" TEXT="M-9803-0607-01  CCD CAMERA CASE LONG  1-off"/>
 <node POSITION="right" TEXT="M-9803-0609-01  CCD CAMERA USB CONN SPACER  1-off"/>
@@ -582,8 +582,8 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="R-1012-0005  0.5mmX800mmX400mm ST STL 430BA  0.008-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0779-02  MANIPULATION HANDLE  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  300-off"/>
 <node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  35-off"/>
+<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0780-05  XY STAGE Y-DRIVE COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-WM01-0002  BAG BUBBLE 130x180  0-off"/>
@@ -636,8 +636,8 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="M-9835-0507-03  LASER SHUTTER BLADE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0521-01  LASER SHUTTER SPIGOT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
-<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  15-off"/>
 <node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  400-off"/>
+<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  15-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0524-02  LASER SHUTTER PIVOT COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
@@ -684,7 +684,7 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="P-CA02-0002  Wire-24AWG 7/0.2mm 300V BK  460-off"/>
 <node POSITION="right" TEXT="P-CA02-OE00  WIRE 7/0.2 PVC ORANGE  200-off"/>
 <node POSITION="right" TEXT="P-CA02-VT00  WIRE_EQUIP_7/0.2mm_1000V_VT  550-off"/>
-<node POSITION="right" TEXT="P-CA57-0004  Sleeve Shrink 3.2mm Yellow 2:1  60-off"/>
+<node POSITION="right" TEXT="P-CA57-0004  HEATSHRINK SLEEVE DIA 3.2  60-off"/>
 <node POSITION="right" TEXT="P-CX01-0040  Con-Rect_8WAY_2ROW_MALE_FREE  1-off"/>
 <node POSITION="right" TEXT="P-CX02-0026  CON-PIN CRIMP CBL ST  7-off"/>
 <node POSITION="right" TEXT="P-MTSM-0007  Stepper Motor 32 Dia x 38.5 Long  1-off"/>
@@ -694,8 +694,8 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="M-9835-0571-04  STAGE BASE PLATE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0572-03  SLIDE PLATE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0574-04  STAGE CLAMP  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  0-off"/>
 <node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  1-off"/>
+<node POSITION="right" TEXT="P-WM01-0003  BAG BUBBLE 180 x 230  0-off"/>
 <node POSITION="right" TEXT="R-2022-4788  4 1/2&quot; SQ AL ALLOY 6082P T6  66-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0578-04  CABLE COVER PLATE  1-off"/>
@@ -805,7 +805,23 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="P-WA04-0029  Spr Con Disc 6.2IDx12.5ODx0.7Thk  7-off"/>
 </node>
 <node POSITION="right" TEXT="A-9835-0839-01  RA400 MOTORISED SLIT ASSY  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9836-0628-03  MOTD SLIT CABLE SUB-ASSY INVIA  1-off"/>
+<node POSITION="right" TEXT="A-9836-0628-03  CABLE SUB-ASSY INVIA **IRE**  1-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9829-0270-02  PIN MOUNTING PCB  2-off"/>
+<node POSITION="right" TEXT="M-9836-0824-03  LABEL, A-9836-0628, SELF LAMIN  1-off"/>
+<node POSITION="right" TEXT="P-CD06-08BA  SOLDER TAG 8BA  2-off"/>
+<node POSITION="right" TEXT="P-SX02-NC01-RT  SOLDER, NO CORROSIVE FLUX  A/R"/>
+<node POSITION="right" TEXT="P-CA57-0002  HEATSHRINK SLEEVE DIA 2.4  A/R"/>
+<node POSITION="right" TEXT="P-CA56-0020-RT  SLEEVE NEOPRENE 2x20  1-off"/>
+<node POSITION="right" TEXT="P-CD12-0002-RT  PIN, SPRING CONTACT  2-off"/>
+<node POSITION="right" TEXT="P-CNAC-1004-RT  Con-Rect_4WAY_1ROW_MALE_FREE  1-off"/>
+<node POSITION="right" TEXT="P-CDAA-4809-RT  CRIMP TERMINALS  4-off"/>
+<node POSITION="right" TEXT="P-CA02-BK00  WIRE_EQUIP_7/0.2mm_1000V_BK  300-off"/>
+<node POSITION="right" TEXT="P-CA02-BE00  WIRE_EQUIP_7/0.2mm_1000V_BE  320-off"/>
+<node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  300-off"/>
+<node POSITION="right" TEXT="P-CA02-PK00  WIRE 7/0.2 PINK  370-off"/>
+<node POSITION="right" TEXT="P-CA57-0001  Sleeve Shrink 1.6mm Yellow 2:1  A/R"/>
+<node POSITION="right" TEXT="P-CA56-0030-RT  SLEEVE NEOPRENE 3x20  1-off"/>
+</node>
 <node POSITION="right" TEXT="M-8003-1032  LABEL-SMALL SERIAL NUMBER (01)  1-off"/>
 <node POSITION="right" TEXT="M-8012-2925-01  CYLINDRICAL ROLLER DIA 3 X 5  4-off"/>
 <node POSITION="right" TEXT="M-9829-0089-04  MOTORISED SLIT LIGHT COVER  1-off"/>
@@ -861,7 +877,7 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="R-1012-0001  1.5mmX800mmX400mm ST STL 430BA  0.001-off"/>
 </node>
 <node POSITION="right" TEXT="P-AD01-0007  ADHESIVE ESP770  0-off"/>
-<node POSITION="right" TEXT="P-AD02-0003  ADHESIVE ARALDITE SLOW  0-off"/>
+<node POSITION="right" TEXT="P-AD02-0003  ADHESIVE ARALDITE PRECISION  0-off"/>
 <node POSITION="right" TEXT="P-AD02-0007-RT  ADHESIVE ARALDITE RAPID  0-off"/>
 <node POSITION="right" TEXT="P-BA01-0300  TUNGSTEN CARBIDE BALL DIA 3  2-off"/>
 <node POSITION="right" TEXT="P-CA66-1782  CABLE TIE 200x2.5mm BLK  1-off"/>
@@ -1332,7 +1348,7 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="A-9835-1148-02  NEON CALIBRATION ASSY  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-9835-0880-02  NEON CAL LAMP PCB ASSY  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="M-9835-0881-01  NEON CAL LAMP PCB  1-off"/>
-<node POSITION="right" TEXT="P-AD02-0003  ADHESIVE ARALDITE SLOW  0-off"/>
+<node POSITION="right" TEXT="P-AD02-0003  ADHESIVE ARALDITE PRECISION  0-off"/>
 <node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  0.120-off"/>
 <node POSITION="right" TEXT="P-CA02-RDBE-RT  WIRE_EQUIP_7/0.2mm_1000V_RD-BE  0.120-off"/>
 <node POSITION="right" TEXT="P-CA66-0922  CABLE TIE 100x2.5mm BLK  3-off"/>
@@ -1577,11 +1593,11 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="P-CA02-RD00  WIRE_EQUIP_7/0.2mm_1000V_RD  400-off"/>
 <node POSITION="right" TEXT="P-CA02-VT00  WIRE_EQUIP_7/0.2mm_1000V_VT  400-off"/>
 <node POSITION="right" TEXT="P-CA02-YW00  WIRE_EQUIP_7/0.2mm_1000V_YL  400-off"/>
-<node POSITION="right" TEXT="P-CA57-0004  Sleeve Shrink 3.2mm Yellow 2:1  45-off"/>
+<node POSITION="right" TEXT="P-CA57-0004  HEATSHRINK SLEEVE DIA 3.2  45-off"/>
 <node POSITION="right" TEXT="P-CN05-091P  CON-D-Type 9PIN CUP  1-off"/>
 <node POSITION="right" TEXT="P-CX01-0051  Con Rect Housing 4x2Way Fem Fr  1-off"/>
 <node POSITION="right" TEXT="P-CX02-0042  Con Contact Pin 20-24AWG Crimp  7-off"/>
-<node POSITION="right" TEXT="P-CX03-0002-RT  Con- Backshell 9w D  1-off"/>
+<node POSITION="right" TEXT="P-CX03-0002-RT  9-WAY D-TYPE BACKSHELL  1-off"/>
 </node>
 <node POSITION="right" TEXT="A-9835-1251-02  LOW COST LASER INTERFACE CABLE  1-off"/>
 <node POSITION="right" TEXT="A-9836-0414-01  SLIT CABLE **IRE**  1-off" FOLDED="true" >
@@ -1596,7 +1612,7 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="P-CA02-VI00  WIRE_EQUIP_7/0.2mm_1000V_VT  1360-off"/>
 <node POSITION="right" TEXT="P-CA02-BN00  WIRE 7/0.2MM PVC BROWN  1360-off"/>
 <node POSITION="right" TEXT="M-9836-0700-01  SLIT CABLE LABEL  1-off"/>
-<node POSITION="right" TEXT="P-CA66-0922  CABLE TIE 100x2.5mm BLK  error-off"/>
+<node POSITION="right" TEXT="P-CA66-0922  CABLE TIE 100x2.5mm BLK  A/R"/>
 <node POSITION="right" TEXT="M-9836-0698-01  SLIT MOTOR 1 LABEL  2-off"/>
 <node POSITION="right" TEXT="M-9836-0699-01  SLIT MOTOR 2 LABEL  2-off"/>
 </node>
@@ -1895,7 +1911,7 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="A-9835-1286-01  LC LASER I/F TO MGL PSU CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-BK00  WIRE_EQUIP_7/0.2mm_1000V_BK  150-off"/>
 <node POSITION="right" TEXT="P-CA02-RD00  WIRE_EQUIP_7/0.2mm_1000V_RD  150-off"/>
-<node POSITION="right" TEXT="P-CA57-0004  Sleeve Shrink 3.2mm Yellow 2:1  10-off"/>
+<node POSITION="right" TEXT="P-CA57-0004  HEATSHRINK SLEEVE DIA 3.2  10-off"/>
 <node POSITION="right" TEXT="P-CNCP-0022  P-CNCP-0022  1-off"/>
 <node POSITION="right" TEXT="P-CX01-0303  Con-Rect_3WAY_1ROW_MALE_FREE  1-off"/>
 <node POSITION="right" TEXT="P-CX02-2001  CRIMP CONTACT 22-30AWG  2-off"/>
@@ -1928,8 +1944,8 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="M-9835-0852-02  CONN STRIP 1  1-off"/>
 <node POSITION="right" TEXT="M-9835-0853-03  CONN NUT  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0857-03  FRONT PANEL COVER  1-off"/>
 <node POSITION="right" TEXT="M-9835-0889-01  CONN STRIP 2  1-off"/>
@@ -1980,8 +1996,8 @@ As of: 03-12-2009    11:46:51">
 <node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-1014-02  DRIVE BAR LONG  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  300-off"/>
 <node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  386-off"/>
+<node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-1017-01  ADJUST LEVER TOP  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
