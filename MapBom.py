@@ -124,15 +124,14 @@ def findchildren(part,tab):
         tab+=1
         for row in result:
             material = str(row[0])
-            materialdesc = namedata[material]
-            html = string.replace(str(materialdesc), '&' , '&amp;')
-            html2 = string.replace(html, '"' , '&quot;')
+            materialdesc = str(namedata[material])
+            html = materialdesc.replace('&' , '&amp;').replace(html, '"' , '&quot;')
             quant = str(pysyteline.clean_number(row[1], 3))
             if quant == '999.999':
                 quant = 'A/R'
             else:
                 quant = quant + '-off'
-            line = str(row[0]) + '  ' + html2 + '  ' + quant
+            line = str(row[0]) + '  ' + html + '  ' + quant
             #print line
             f.write('<node POSITION="right" TEXT="' + line + '"')
             next = findchildren(material, tab)
