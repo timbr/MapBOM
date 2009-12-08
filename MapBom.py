@@ -1,13 +1,14 @@
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.2.4
+# Version:     0.2.5
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
-# Created:     03/12/2009
+# Created:     08/12/2009
 #
-# Changes:    0.2.4: If quantity is A/R then this is printed instead of error-off
+# Changes:     0.2.5: Added links to drawings on Sheffield
+#                     0.2.4: If quantity is A/R then this is printed instead of error-off
 #                     0.2.3: Checks to see if Yaml file can be found. If not then uses a local copy
 #                     0.2.2: Added Yaml file containing Ireland BOMs
 #                     0.2.1: Development branch to investigate using SELECT IN statements
@@ -20,11 +21,15 @@ import os
 import datetime
 import getopt, sys
 import yaml
+import glob
 
-__VERSION__ = '0.2.4'
+__VERSION__ = '0.2.5'
 
 namedata={}
 matdata={}
+drawingsdb = {}
+
+drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\Drawings\\*.pdf')
 
 #print a short help message
 def usage():
@@ -32,7 +37,7 @@ def usage():
   -------------------------------------------------------
   MapBom %s - Create a BOM map
   -------------------------------------------------------
-  Tim Browning 21/10/2009
+  Tim Browning 8/12/2009
 
 
   USAGE: %s <Top Assembly Number> [outputfile]
@@ -108,6 +113,13 @@ def AddIrelandParts():
             else:
                 matdata[assy['Assembly']].append([part['Part Number'], qty])
 
+def CreateDrawingsDB():
+    for filepath in drawingfilepaths:
+        filename = filepath.split('\\')[-1:][0]
+        item = filename[1:15]
+        filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
+        drawingsdb[item] = filename
+
 def findchildren(part,tab):
     if tab==-1:
         desc = namedata[part]
@@ -131,9 +143,13 @@ def findchildren(part,tab):
                 quant = 'A/R'
             else:
                 quant = quant + '-off'
-            line = str(row[0]) + '  ' + html + '  ' + quant
+            line = material + '  ' + html + '  ' + quant
             #print line
-            f.write('<node POSITION="right" TEXT="' + line + '"')
+            if drawingsdb.has_key(material):
+                link = 'LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/' + drawingsdb[material] +'" '
+            else:
+                link = ''
+            f.write('<node ' + link + 'POSITION="right" TEXT="' + line + '"')
             next = findchildren(material, tab)
             if next != 'nochild':
                 f.write('</node>\n')
@@ -205,6 +221,7 @@ if __name__ == '__main__':
 
     CreateDictionary(toplevel[item_num].Item)
     AddIrelandParts()
+    CreateDrawingsDB()
 
     f=open(outputfile, 'w')
     f.write('<map version="0.8.1">\n')

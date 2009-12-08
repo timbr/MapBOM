@@ -1,10 +1,10 @@
 <map version="0.8.1">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
 <node STYLE="fork" TEXT="A-9835-1200-02  RA801 SYSTEM ASSY
-As of: 07-12-2009    11:54:58">
+As of: 08-12-2009    10:54:46">
 <edge WIDTH="thin"/>
 <node POSITION="right" TEXT="A-9835-0963-01  EXTERNAL CABLE KIT  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9835-1171-01  1M PC TO USB CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1171-01-A%5D%201M%20PC%20to%20RA801%20USB%20Cable.pdf" POSITION="right" TEXT="A-9835-1171-01  1M PC TO USB CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CABS-0012-RT  CABLE USB A TO B 1 METRE  1-off"/>
 <node POSITION="right" TEXT="P-CA59-0008-RT  FERRITE CORE CLIP-ON  1-off"/>
 <node POSITION="right" TEXT="P-AD06-0001-RT  RTV 3145 SEALANT  A/R"/>
@@ -347,8 +347,8 @@ As of: 07-12-2009    11:54:58">
 </node>
 <node POSITION="right" TEXT="M-9803-0604-01  SPACER M4 X 21,5 LG  4-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0150  Steel basket, Coarse mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  33-off"/>
 <node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  300-off"/>
+<node POSITION="right" TEXT="R-1001-1016  8.0MM DIA.303S31 ST.ST  33-off"/>
 </node>
 <node POSITION="right" TEXT="M-9803-0605-01  FAN BAFFLE/SCREEN  1-off"/>
 <node POSITION="right" TEXT="M-9803-0606-01  CCD CAMERA PILLAR 6 DIA X 80 LG  4-off" FOLDED="true" >
@@ -582,8 +582,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="R-1012-0005  0.5mmX800mmX400mm ST STL 430BA  0.008-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0779-02  MANIPULATION HANDLE  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  35-off"/>
 <node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  300-off"/>
+<node POSITION="right" TEXT="R-2022-0024  3/8&quot; DIA AL ALLOY 6082 TF  35-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0780-05  XY STAGE Y-DRIVE COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-WM01-0002  BAG BUBBLE 130x180  0-off"/>
@@ -636,8 +636,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="M-9835-0507-03  LASER SHUTTER BLADE  1-off"/>
 <node POSITION="right" TEXT="M-9835-0521-01  LASER SHUTTER SPIGOT  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
-<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  400-off"/>
 <node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  15-off"/>
+<node POSITION="right" TEXT="R-2022-0048  3/4&quot; DIA AL ALLOY 6082 T6  400-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0524-02  LASER SHUTTER PIVOT COVER  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0050  Washable Toting, 50mm deep, 80 div  0-off"/>
@@ -680,7 +680,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-SPPL-0014-RT  SPRUNG CONTACT 1203 CUP  2-off"/>
 </node>
 <node POSITION="right" TEXT="A-9835-0570-05  Z STAGE ASSEMBLY  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9835-1161-01  Z-STAGE MOTION CABLE ASSEMBLY **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1161-01-C%5D%20Z-Stage%20Motion%20Cable%20Assembly.pdf" POSITION="right" TEXT="A-9835-1161-01  Z-STAGE MOTION CABLE ASSEMBLY **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-0002  Wire-24AWG 7/0.2mm 300V BK  460-off"/>
 <node POSITION="right" TEXT="P-CA02-OE00  WIRE 7/0.2 PVC ORANGE  200-off"/>
 <node POSITION="right" TEXT="P-CA02-VT00  WIRE_EQUIP_7/0.2mm_1000V_VT  550-off"/>
@@ -835,12 +835,12 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="M-9829-0245-02  MOTORISED SLIT BLADES  1-off"/>
 <node POSITION="right" TEXT="M-9829-0290-01  ROLLER CONTACT  1-off"/>
 <node POSITION="right" TEXT="M-9835-0840-01  MODIFIED ANVIL #1  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  2-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-2022-0224  3 1/2&quot; DIA AL ALLOY 6082P T6  28-off"/>
 <node POSITION="right" TEXT="T-7146  Program  0-off"/>
 <node POSITION="right" TEXT="T-7148  Program  0-off"/>
 </node>
-<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  1-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9829-0085-04  MOTORISED SLIT ANVIL  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-2022-0224  3 1/2&quot; DIA AL ALLOY 6082P T6  28-off"/>
 <node POSITION="right" TEXT="T-7146  Program  0-off"/>
 <node POSITION="right" TEXT="T-7148  Program  0-off"/>
@@ -946,7 +946,7 @@ As of: 07-12-2009    11:54:58">
 </node>
 <node POSITION="right" TEXT="A-9835-1051-03  SPINE PLATE ASSEMBLY  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-9835-1094-01  TEMP SENSOR PCB  1-off"/>
-<node POSITION="right" TEXT="A-9835-1250-01  TEMPERATURE SENSOR CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1250-01-A%5D%20Temperature%20Sensor%20Cable.pdf" POSITION="right" TEXT="A-9835-1250-01  TEMPERATURE SENSOR CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA09-BK00  WIRE 7/0.1 PTFE BLACK  370-off"/>
 <node POSITION="right" TEXT="P-CA09-RD00  WIRE 7/0.12 TYPE A PTFE RED  370-off"/>
 <node POSITION="right" TEXT="P-CA09-VT00  WIRE_EQUIP_7/0.1mm_300V_VT  370-off"/>
@@ -954,7 +954,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-CN40-0300  Con-Rect 3WAY 1ROW FREE  1-off"/>
 <node POSITION="right" TEXT="P-CX02-8000  CRIMP TERMINAL 28-32 AWG  6-off"/>
 </node>
-<node POSITION="right" TEXT="A-9836-0550-02  SLIT FEEDTHROUGH PCB  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9836-0550-02-A%5D%20Slit%20Feedthrough%20PCB.pdf" POSITION="right" TEXT="A-9836-0550-02  SLIT FEEDTHROUGH PCB  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="M-9836-0551-02  SLIT FEEDTHROUGH PCB  1-off"/>
 <node POSITION="right" TEXT="P-CN02-1004  Con Hdr 4x1Pin 2.54 Str TH  1-off"/>
 <node POSITION="right" TEXT="P-CN10-008W  Con Hdr 4x2Pin 2.54 Str TH  2-off"/>
@@ -1136,7 +1136,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-SC01-0304-RT  Screw Hex Skt Cap Hd M3x4  2-off"/>
 <node POSITION="right" TEXT="P-SC01-0316  Screw Hex Skt Cap Hd M3x16  2-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1139-01  ND FILTER ASSEMBLY  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1139-01-A%5D%20ND%20Filter%20Assembly.pdf" POSITION="right" TEXT="A-9835-1139-01  ND FILTER ASSEMBLY  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="M-9835-0503-01  ND 3 FILTER ARM 1/2&quot;  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0120  Steel basket, Fine mesh, no divider  0-off"/>
 </node>
@@ -1345,8 +1345,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-SC01-0312  Screw Hex Skt Cap Hd M3x12  3-off"/>
 <node POSITION="right" TEXT="P-SC06-0204-RT  Screw Small Pan Hd M2x4 B-Tite  4-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1148-02  NEON CALIBRATION ASSY  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9835-0880-02  NEON CAL LAMP PCB ASSY  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1148-02-A%5D%20Neon%20Calibration%20Assy.pdf" POSITION="right" TEXT="A-9835-1148-02  NEON CALIBRATION ASSY  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-0880-02-A%5D%20Neon%20Cal%20Lamp%20PCB%20Assy.pdf" POSITION="right" TEXT="A-9835-0880-02  NEON CAL LAMP PCB ASSY  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="M-9835-0881-01  NEON CAL LAMP PCB  1-off"/>
 <node POSITION="right" TEXT="P-AD02-0003  ADHESIVE ARALDITE PRECISION  0-off"/>
 <node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  0.120-off"/>
@@ -1457,10 +1457,22 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-SC01-0416  Screw Hex Skt Cap Hd M4x16  4-off"/>
 </node>
 <node POSITION="right" TEXT="A-9835-1165-02  RA801 MK2 BASE UNIT ASSY  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9835-1016-01  RA801 STAGE CONTROLLER CABLE  1-off"/>
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1016-01-A%5D%20RA801%20Stage%20Controller%20Cable%20Model.pdf" POSITION="right" TEXT="A-9835-1016-01  RA801 STAGE CONTROLLER CABLE **IRE**  1-off" FOLDED="true" >
+<node POSITION="right" TEXT="M-9835-0933-02  CXY CABLE BACKSHELL FOR RA801  1-off"/>
+<node POSITION="right" TEXT="M-9835-0937-01  CXY CABLE STRAIN RELIEF  1-off"/>
+<node POSITION="right" TEXT="M-9835-0938-03  BACKSHELL COVER  1-off"/>
+<node POSITION="right" TEXT="P-CA27-0002  CABLE 15 CORE 7/0.1 SCRN BK  error-off"/>
+<node POSITION="right" TEXT="P-CX01-826P  D SHELL 26 WAY PLUG  2-off"/>
+<node POSITION="right" TEXT="P-CX02-0009  CONTACT PIN, CRIMP  30-off"/>
+<node POSITION="right" TEXT="P-CX03-0001  HOOD D 15 WAY METAL SCREENING  1-off"/>
+<node POSITION="right" TEXT="P-SC06-0204  SCREW M2x4 PAN HD THD FORMING  5-off"/>
+<node POSITION="right" TEXT="P-SC25-0001  SCREW, CROSS REC, PAN HD, No.4x9.5  2-off"/>
+<node POSITION="right" TEXT="P-SC01-9005  Screw Hex Skt Cap Hd 4-40UNCx1  2-off"/>
+<node POSITION="right" TEXT="P-WA01-0030  Washer Flat M3 Form A  2-off"/>
+</node>
 <node POSITION="right" TEXT="A-9835-1094-01  TEMP SENSOR PCB  1-off"/>
 <node POSITION="right" TEXT="A-9835-1099-01  RA801 MK2 BASE BOARD (PROG'D)  1-off" FOLDED="true" >
-<node POSITION="right" TEXT="A-9835-1095-02  RA801 MK2 BOARD  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1095-02-A%5D%20RA801%20Base%20Unit%20PCB.pdf" POSITION="right" TEXT="A-9835-1095-02  RA801 MK2 BOARD  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="M-9835-1096-02  RA801 MK2 BOARD  1-off"/>
 <node POSITION="right" TEXT="P-CN02-1003  Con Hdr 3x1Pin 2.54 Str TH  1-off"/>
 <node POSITION="right" TEXT="P-CN02-1005  Con Hdr 5x1Pin 2.54 Str TH  3-off"/>
@@ -1543,7 +1555,7 @@ As of: 07-12-2009    11:54:58">
 </node>
 <node POSITION="right" TEXT="F-9835-1215-01  RA801 MK2 BASE BOARD FW  0-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1172-01  RA801/MSC20 PWR &amp; COMMS CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1172-01-A%5D%20RA801%20MSC20%20Pwr%20&amp;%20Comms%20Cable.pdf" POSITION="right" TEXT="A-9835-1172-01  RA801/MSC20 PWR &amp; COMMS CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  130-off"/>
 <node POSITION="right" TEXT="P-CA02-YW00  WIRE_EQUIP_7/0.2mm_1000V_YL  130-off"/>
 <node POSITION="right" TEXT="P-CA03-BE00  WIRE_EQUIP_16/0.2mm_1000V_BE  130-off"/>
@@ -1551,7 +1563,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-CX02-0025  CON-PIN CRIMP CBL ST  8-off"/>
 <node POSITION="right" TEXT="P-CX01-0013  Con-Rect 4Way 2Row Free  2-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1173-02  INLET-POWER SWITCH CABLE ASSY **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1173-02-A%5D%20Inlet-Power%20Switch%20Cable%20Assy.pdf" POSITION="right" TEXT="A-9835-1173-02  INLET-POWER SWITCH CABLE ASSY **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA06-0005-RT  WIRE_EQUIP_24/0.19mm_600V_BE  720-off"/>
 <node POSITION="right" TEXT="P-CA06-0001-RT  WIRE_EQUIP_24/0.19mm_600V_BN  720-off"/>
 <node POSITION="right" TEXT="P-CA06-GNYW-RT  WIRE_EQUIP_24/0.2mm_1500V_GN-YW  240-off"/>
@@ -1564,7 +1576,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-SW01-0008  Switch Rocker DPST 250V 10A Pnl  1-off"/>
 <node POSITION="right" TEXT="P-CA66-0922  CABLE TIE 100x2.5mm BLK  2-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1174-02  PSU TO RA801 PCB CABLE ASSY **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1174-02-A%5D%20PSU%20to%20RA801%20PCB%20Cable%20Assy.pdf" POSITION="right" TEXT="A-9835-1174-02  PSU TO RA801 PCB CABLE ASSY **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA06-RD00-RT  WIRE_EQUIP_24/0.2mm_1500V_RD  280-off"/>
 <node POSITION="right" TEXT="P-CA06-BK00-RT  WIRE_EQUIP_24/0.2mm_1500V_BK  840-off"/>
 <node POSITION="right" TEXT="P-CA06-YW00-RT  WIRE_EQUIP_24/0.2mm_1500V_YW  850-off"/>
@@ -1574,18 +1586,18 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-CX02-0043  Con Contact Pin 16AWG Crimp  6-off"/>
 <node POSITION="right" TEXT="P-CX02-2002  CRIMP TERMINAL 18-24AWG  6-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1177-01  B-UNIT TO T-PLATE RIBBON CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1177-01-A%5D%20B-Unit%20to%20T-Plate%20Ribbon%20Cable.pdf" POSITION="right" TEXT="A-9835-1177-01  B-UNIT TO T-PLATE RIBBON CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA36-0021-RT  Cable 20x7/0.125mm PVC GY  780-off"/>
 <node POSITION="right" TEXT="P-CN08-5002  Con-Rect 20SKT 2ROW FREE  2-off"/>
 <node POSITION="right" TEXT="STRAIN RELEIF P-CN08-5002  STRAIN RELEIF P-CN08-5002  1-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1179-02  BASE UNIT FAN CABLE ASSY **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1179-02-A%5D%20Base%20Unit%20Fan%20Cable%20Assy.pdf" POSITION="right" TEXT="A-9835-1179-02  BASE UNIT FAN CABLE ASSY **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA66-0922  CABLE TIE 100x2.5mm BLK  2-off"/>
 <node POSITION="right" TEXT="P-CX01-0303  Con-Rect_3WAY_1ROW_MALE_FREE  1-off"/>
 <node POSITION="right" TEXT="P-CX02-2001  CRIMP CONTACT 22-30AWG  2-off"/>
 <node POSITION="right" TEXT="P-FA01-0015  Blower 12V 4W8 34.75m3/h 47.5dBA  1-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1198-02  Z STAGE TO BASE UNIT CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1198-02-A%5D%20Z%20Stage%20to%20Base%20Unit%20Cable.pdf" POSITION="right" TEXT="A-9835-1198-02  Z STAGE TO BASE UNIT CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-BE00  WIRE_EQUIP_7/0.2mm_1000V_BE  400-off"/>
 <node POSITION="right" TEXT="P-CA02-BK00  WIRE_EQUIP_7/0.2mm_1000V_BK  420-off"/>
 <node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  400-off"/>
@@ -1599,8 +1611,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-CX02-0042  Con Contact Pin 20-24AWG Crimp  7-off"/>
 <node POSITION="right" TEXT="P-CX03-0002-RT  9-WAY D-TYPE BACKSHELL  1-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1251-02  LOW COST LASER INTERFACE CABLE  1-off"/>
-<node POSITION="right" TEXT="A-9836-0414-01  SLIT CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1251-02-A%5D%20Low%20Cost%20Laser%20Interface%20Cable.pdf" POSITION="right" TEXT="A-9835-1251-02  LOW COST LASER INTERFACE CABLE  1-off"/>
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9836-0414-01-C%5D%20slit%20cable%20assembly.pdf" POSITION="right" TEXT="A-9836-0414-01  SLIT CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CNAC-0012-RT  CONNECTOR FREE 8WAY 2ROW  4-off"/>
 <node POSITION="right" TEXT="P-CD04-0007-RT  TERMINAL CRIMP SCKT HE14  24-off"/>
 <node POSITION="right" TEXT="P-CA02-GN00  WIRE-EQUIP 7/0.2mm 1000V GN  1360-off"/>
@@ -1867,8 +1879,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="M-9835-0899-03  LASER LOCKING POST  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
 <node POSITION="right" TEXT="P-WM01-0001  BAG BUBBLE 100x135  1-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  300-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  94-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0931-02  LASER LIGHT TUBE  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
@@ -1908,7 +1920,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="A-9835-1255-01  MGL532 LASER AND PSU  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-PAGL-0045  DPSS LASER 532nm 10mW 5%  1-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1286-01  LC LASER I/F TO MGL PSU CABLE **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1286-01-A%5D%20LC%20Laser%20Interface%20to%20MGL%20PSU%20Cable.pdf" POSITION="right" TEXT="A-9835-1286-01  LC LASER I/F TO MGL PSU CABLE **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-BK00  WIRE_EQUIP_7/0.2mm_1000V_BK  150-off"/>
 <node POSITION="right" TEXT="P-CA02-RD00  WIRE_EQUIP_7/0.2mm_1000V_RD  150-off"/>
 <node POSITION="right" TEXT="P-CA57-0004  HEATSHRINK SLEEVE DIA 3.2  10-off"/>
@@ -1944,8 +1956,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="M-9835-0852-02  CONN STRIP 1  1-off"/>
 <node POSITION="right" TEXT="M-9835-0853-03  CONN NUT  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="A-5382-0140  Steel basket, Fine mesh, with divider  0-off"/>
-<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
 <node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  400-off"/>
+<node POSITION="right" TEXT="R-1001-0032  1/2&quot;DIA.303S31 ST.ST  25-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0857-03  FRONT PANEL COVER  1-off"/>
 <node POSITION="right" TEXT="M-9835-0889-01  CONN STRIP 2  1-off"/>
@@ -1960,8 +1972,8 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="R-2022-5680  2 1/2&quot; X 1/2 AL ALLOY 6082P T6  250-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0835-04  DOOR PIVOT  2-off" FOLDED="true" >
-<node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  300-off"/>
 <node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  26.250-off"/>
+<node POSITION="right" TEXT="R-2021-0032  1/2&quot; DIA AL ALLOY 6082 TF  300-off"/>
 </node>
 <node POSITION="right" TEXT="M-9835-0994-01  PIVOT BUSH  2-off" FOLDED="true" >
 <node POSITION="right" TEXT="R-4001-0064  1&quot; DIA. BLACK POLYACETAL.  10-off"/>
@@ -2042,7 +2054,7 @@ As of: 07-12-2009    11:54:58">
 <node POSITION="right" TEXT="P-WA01-04ZN  Washer Flat M4 Form A  2-off"/>
 <node POSITION="right" TEXT="P-WA12-0018  Washer Nylon 6.4IDx18ODx1.2  1-off"/>
 </node>
-<node POSITION="right" TEXT="A-9835-1175-02  INTERLOCK &amp; F-PANEL CABLE ASSY **IRE**  1-off" FOLDED="true" >
+<node LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%5BA-9835-1175-02-A%5D%20Interlock%20&amp;%20F-Panel%20Cable%20Assy.pdf" POSITION="right" TEXT="A-9835-1175-02  INTERLOCK &amp; F-PANEL CABLE ASSY **IRE**  1-off" FOLDED="true" >
 <node POSITION="right" TEXT="P-CA02-WE00  WIRE_EQUIP_7/0.2mm_1000V_WE  750-off"/>
 <node POSITION="right" TEXT="P-CA02-BE00  WIRE_EQUIP_7/0.2mm_1000V_BE  1120-off"/>
 <node POSITION="right" TEXT="P-CA02-BK00  WIRE_EQUIP_7/0.2mm_1000V_BK  1340-off"/>

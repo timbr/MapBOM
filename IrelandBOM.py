@@ -90,6 +90,66 @@ Items:
       UM:
 
 ---
+Assembly: A-9835-1016-01
+Description: RA801 STAGE CONTROLLER CABLE
+
+Items:
+    - Part Number: M-9835-0933-02
+      Description: CXY CABLE BACKSHELL FOR RA801
+      Qty: 1
+      UM:
+
+    - Part Number: M-9835-0937-01
+      Description: CXY CABLE STRAIN RELIEF
+      Qty: 1
+      UM:
+
+    - Part Number: M-9835-0938-03
+      Description: BACKSHELL COVER
+      Qty: 1
+      UM:
+
+    - Part Number: P-CA27-0002
+      Description: CABLE 15 CORE 7/0.1 SCRN BK
+      Qty: 1.6
+      UM: M
+
+    - Part Number: P-CX01-826P
+      Description: D SHELL 26 WAY PLUG
+      Qty: 2
+      UM:
+
+    - Part Number: P-CX02-0009
+      Description: CONTACT PIN, CRIMP
+      Qty: 30
+      UM:
+
+    - Part Number: P-CX03-0001
+      Description: HOOD D 15 WAY METAL SCREENING
+      Qty: 1
+      UM:
+
+    - Part Number: P-SC06-0204
+      Description: SCREW M2x4 PAN THD FORMING
+      Qty: 5
+      UM:
+
+    - Part Number: P-SC25-0001
+      Description: SCREW, CROSS REC, PAN HD, No.4x9.5
+      Qty: 2
+      UM:
+
+    - Part Number: P-SC01-9005
+      Description: Screw Hex Skt Cap Hd 4-40UNCx1 
+      Qty: 2
+      UM:
+
+    - Part Number: P-WA01-0030
+      Description: WASHER M3 NORMAL
+      Qty: 2
+      UM:
+
+---
 Assembly: A-9835-1161-01
 Description: Z-STAGE MOTION CABLE ASSEMBLY
 
