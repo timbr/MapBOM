@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 
 class MindMap:
     """Build a FreeMind xml file
-
     Creates an xml tree that can be read by the FreeMind mind-mapping
+
     software."""
 
     def __init__(self, *args):
@@ -24,7 +24,14 @@ class MindMap:
         else:
             self.filename = ''
 
-            
+
+    builtin_icons = ["help", "messagebox_warning", "idea", "button_ok",\
+        "bookmark", "penguin", "licq", "button_cancel", "full-1", "full-2", "full-3",\
+        "full-4", "full-5", "full-6", "full-7", "back", "forward", "attach", "ksmiletris",\
+        "clanbomber", "desktop_new", "flag", "gohome", "kaddressbook", "knotify", "korn",\
+        "Mail", "password", "pencil", "stop", "wizard", "xmag", "bell"]
+
+
     def addtitle(self, title):
         """Adds the central node to the mindmap"""
         
@@ -67,6 +74,21 @@ class MindMap:
         """Adds a sibling node to the current node using the given text"""
         
         self.addnode(self.parent_element, text) # add a sibling to current element
+
+
+    def addlink(self, link):
+        """Appends a URL link to the node"""
+
+        self.current_element.set('LINK', link)
+
+
+    def addicon(self, iconname):
+        """Attaches a built-in icon to a node"""
+
+        if iconname not in self.builtin_icons:
+            iconname = "messagebox_warning"
+        icon = ET.SubElement(self.current_element, 'icon')
+        icon.set('BUILTIN', iconname)
 
 
     def newgeneration(self):
