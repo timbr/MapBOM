@@ -1,13 +1,14 @@
 #-------------------------------------------------------------------------------
-# Name:        MapBom.py
-# Version:     0.2.5
+# Name:        ET_withIreland_MapBom.py
+# Version:     0.2.6
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
-# Created:     08/12/2009
+# Created:     06/01/2010
 #
-# Changes:     0.2.5: Added links to drawings on Sheffield
+# Changes:     0.2.6: Now uses MindMap class to write FreeMind xml file
+#                     0.2.5: Added links to drawings on Sheffield
 #                     0.2.4: If quantity is A/R then this is printed instead of error-off
 #                     0.2.3: Checks to see if Yaml file can be found. If not then uses a local copy
 #                     0.2.2: Added Yaml file containing Ireland BOMs
@@ -15,15 +16,16 @@
 #                     0.2: Modified SQL query to include INVIA part numbers [now irrelevant]
 #-------------------------------------------------------------------------------
 
-from tim_modules import pysyteline
-import string
+import pyodbc
+import decimal
 import os
 import datetime
 import getopt, sys
-import yaml
+#import yaml
 import glob
+from classET import MindMap
 
-__VERSION__ = '0.2.5'
+__VERSION__ = '0.2.6'
 
 namedata={}
 matdata={}
@@ -37,7 +39,7 @@ def usage():
   -------------------------------------------------------
   MapBom %s - Create a BOM map
   -------------------------------------------------------
-  Tim Browning 8/12/2009
+  Tim Browning 06/01/2009
 
 
   USAGE: %s <Top Assembly Number> [outputfile]
@@ -47,7 +49,7 @@ def usage():
 """ % (__VERSION__, sys.argv[0], ))
 
 
-def query(in_list):
+def ukquery(in_list):
     command="""select DISTINCT 
     rvxCurrentMaterials.Item, 
     rvxCurrentMaterials.Description, 
@@ -59,13 +61,27 @@ def query(in_list):
     ORDER BY rvxCurrentMaterials.Material""" % in_list
     
     return command
+    
+def iequery(in_list):
+    command="""select DISTINCT 
+    rvxCurrentMaterials.Item, 
+    rvxCurrentMaterials.Description, 
+    rvxCurrentMaterials.Material, 
+    rvxCurrentMaterials.\"Material Description\" as matdesc, 
+    rvxCurrentMaterials.Quantity 
+    FROM IE_App.dbo.rvxCurrentMaterials 
+    WHERE rvxCurrentMaterials.Item in (%s) AND rvxCurrentMaterials.Material like '_-%%' 
+    ORDER BY rvxCurrentMaterials.Material""" % in_list
+    
+    return command
+
 
 
 def CreateDictionary(part):
     if part[-1] != "'" and part[:1] != "'":
         part = "'" + part + "'" # The part number needs to be in inverted commas for the SQL query
 
-    result = pysyteline.runquery(query(part))
+    result = runquery_uk(ukquery(part)) + runquery_ie(iequery(part))
     
     if result != []:
         for row in result:
@@ -90,28 +106,6 @@ def CreateDictionary(part):
         
         CreateDictionary(child_list)
 
-def AddIrelandParts():
-    Ire_prefix = " **IRE**"
-    yamlfile = "\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\IrelandBOMs\\IrelandBOM.yaml"
-    try:
-        yamldata = open(yamlfile, 'r').read()
-    except:
-        from IrelandBOM import yamldata
-        print 'Using local copy of Ireland assembly data.'
-    
-    for assy in yaml.load_all(yamldata):
-        namedata[assy['Assembly']] = assy['Description'] + Ire_prefix
-        for part in assy['Items']:
-            if part['Qty'] == 'A/R':
-                qty = '999.999'
-            else:
-                qty = part['Qty']
-            if part['Part Number'] not in namedata:
-                namedata[part['Part Number']] = part['Description']
-            if assy['Assembly'] not in matdata:
-                matdata[assy['Assembly']] = [[part['Part Number'], qty]]
-            else:
-                matdata[assy['Assembly']].append([part['Part Number'], qty])
 
 def CreateDrawingsDB():
     for filepath in drawingfilepaths:
@@ -120,42 +114,84 @@ def CreateDrawingsDB():
         filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
         drawingsdb[item] = filename
 
-def findchildren(part,tab):
-    if tab==-1:
-        desc = namedata[part]
-        timeformat = format = "%d-%m-%Y    %H:%M:%S"
-        timenow = datetime.datetime.today().strftime(timeformat)
-        part_text = part + '  ' + str(desc)
-        date_text = 'As of: ' + timenow
-        f.write('<node STYLE="fork" TEXT="' + part_text + '\n' + date_text + '">\n')
-        f.write('<edge WIDTH="thin"/>\n')
+def findchildren(part, mindmap):
     if part in matdata:
         result = matdata[part]
-        if tab != -1:
-            f.write(' FOLDED="true" >\n')
-        tab+=1
+        mindmap.newgeneration()
         for row in result:
             material = str(row[0])
             materialdesc = str(namedata[material])
-            html = materialdesc.replace('&' , '&amp;').replace('"' , '&quot;')
-            quant = str(pysyteline.clean_number(row[1], 3))
+            quant = str(clean_number(row[1], 3))
             if quant == '999.999':
                 quant = 'A/R'
             else:
-                quant = quant + '-off'
-            line = material + '  ' + html + '  ' + quant
-            #print line
+                quant = '%s-off' % (quant)
+            line = '%s  %s  %s' % (str(row[0]), materialdesc, quant)
+            mindmap.addsibling(line)
             if drawingsdb.has_key(material):
-                link = 'LINK="//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/' + drawingsdb[material] +'" '
-            else:
-                link = ''
-            f.write('<node ' + link + 'POSITION="right" TEXT="' + line + '"')
-            next = findchildren(material, tab)
+                link = '//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%s' % (drawingsdb[material])
+                mindmap.addlink(link)
+            next = findchildren(material, mindmap)
             if next != 'nochild':
-                f.write('</node>\n')
+                mindmap.previousgeneration()
     else:
-        f.write('/>\n')
         return 'nochild'
+
+        
+def runquery_uk(*args):
+    """Runs an SQL query on the Syteline database
+
+    First argument is the query string.
+    Optional arguments are search string substitutions."""
+
+    uksytelineconnection = \
+    pyodbc.connect('DRIVER={SQL Server};SERVER=GBSYTELINEDB1;DATABASE=UK_App')
+    
+    cursor = uksytelineconnection.cursor()
+    cursor.execute(*args)
+    ukresults = [row for row in cursor]
+    
+    return ukresults
+    
+def runquery_ie(*args):
+    """Runs an SQL query on the Syteline database
+
+    First argument is the query string.
+    Optional arguments are search string substitutions."""
+    
+    iesytelineconnection = \
+    pyodbc.connect('DRIVER={SQL Server};SERVER=IESYTELINEDB1;DATABASE=IE_App')
+    
+    cursor = iesytelineconnection.cursor()
+    cursor.execute(*args)
+    ieresults = [row for row in cursor]
+    
+    return ieresults
+
+        
+def clean_number(number, decimal_places=2):
+    """Quantizes decimal number
+
+    If the number is an integer then the number is returned with no decimal
+    places. If the number is a non-integer it is returned to decimal_places
+    (default is 2 decimal places).
+
+    If the 'number' sent is unicode text it is converted to Decimal then cleaned
+    """
+
+    decplaces = decimal.Decimal('10') ** -decimal_places
+
+    if type(number) != decimal.Decimal:
+        try:
+            number = decimal.Decimal(number)
+        except:
+            return 'error' # can only deal with decimal types
+    if number._isinteger() == True:
+        return number.to_integral()
+    elif number.is_zero() == True:
+        return number.to_integral()
+    else:
+        return number.quantize(decplaces)
 
 
 if __name__ == '__main__':
@@ -185,17 +221,25 @@ if __name__ == '__main__':
 
     item_num = 0
 
-    command="""select DISTINCT
+    ukcommand="""select DISTINCT
     rvxCurrentMaterials.Item,
     rvxCurrentMaterials.Description
     FROM UK_App.dbo.rvxCurrentMaterials
     WHERE rvxCurrentMaterials.Item like ?
     ORDER BY rvxCurrentMaterials.Item
     """
+    
+    iecommand="""select DISTINCT
+    rvxCurrentMaterials.Item,
+    rvxCurrentMaterials.Description
+    FROM IE_App.dbo.rvxCurrentMaterials
+    WHERE rvxCurrentMaterials.Item like ?
+    ORDER BY rvxCurrentMaterials.Item
+    """
 
     item = '%' + part + '%'
 
-    toplevel = pysyteline.runquery(command, item)
+    toplevel = runquery_uk(ukcommand, item) + runquery_ie(iecommand, item)
 
     if toplevel == []:
         print "\nPart %s doesn't exist in Syteline Current Materials." % (part)
@@ -214,24 +258,32 @@ if __name__ == '__main__':
         except:
             sys.exit()
 
-
-    print "\nCreating BOM mind map for %s    %s" % (toplevel[item_num].Item, toplevel[item_num].Description)
+    part_num = toplevel[item_num].Item
+    part_desc = toplevel[item_num].Description
+    print "\nCreating BOM mind map for %s    %s" % (part_num, part_desc)
 
     print "\nDownloading data from Syteline."
 
-    CreateDictionary(toplevel[item_num].Item)
-    AddIrelandParts()
+    CreateDictionary(part_num)
+    #AddIrelandParts()
     CreateDrawingsDB()
 
-    f=open(outputfile, 'w')
-    f.write('<map version="0.8.1">\n')
-    f.write('<!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->\n')
-    findchildren(toplevel[item_num].Item, -1)
-    f.write('</node>\n')
-    f.write('</map>\n')
-    f.close()
+    #desc = namedata[part_num]
+    timeformat = format = "%d-%m-%Y    %H:%M:%S"
+    timenow = datetime.datetime.today().strftime(timeformat)
+    part_text = '%s  %s' % (part_num, str(part_desc))
+    date_text = 'As of: %s' % (timenow)
+    topnodetext = '%s\n%s' % (part_text, date_text)
+    
+    map = MindMap(outputfile)
+    map.addtitle(topnodetext)
+    
+    findchildren(part_num, map)
+
+    map.fold()
+    map.write()
 
     print "\nMind Map file saved as %s" % (outputfile)
     print "\nOpening Mind Map"
 
-    os.popen(outputfile)
+    os.popen('FreemindPortable.bat ' + outputfile)
