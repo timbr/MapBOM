@@ -47,13 +47,13 @@ class PartUtils:
             
             
     def findpartslike(self, partnum):
-        result = self.runquery("%"+partnum+"%", like = True, column = 'Item')
-        #result += self.runquery("%"+partnum+"%", like = True, column = 'Material')
+        result = self.runquery("%"+partnum+"%", searchtype = 'itemdesc', column = 'Item')
+        #result += self.runquery("%"+partnum+"%", searchtype = 'itemdesc', column = 'Material')
         return result
         
         
-    def query(self, db, in_list, like=False, column = 'Item'):
-        if like == False:
+    def query(self, db, in_list, searchtype='bom', column = 'Item'):
+        if searchtype == 'bom':
             command="""select DISTINCT 
             %(database)s.Item, 
             %(database)s.Description, 
@@ -66,7 +66,7 @@ class PartUtils:
 
             return command
             
-        else:
+        elif searchtype == 'itemdesc':
             command="""select DISTINCT 
             %(database)s.Item, 
             %(database)s.Description
@@ -76,14 +76,13 @@ class PartUtils:
 
             return command
             
-            
-    def partsquery(self, db, in_list, like=True, column = 'Material'):            
-        command="""select DISTINCT 
-        %(database)s.Material, 
-        %(database)s.\"Material Description\" as matdesc
-        FROM %(database)s 
-        WHERE %(database)s.%(Column)s like '%(item_list)s'
-        ORDER BY %(database)s.Material""" % {'database': db, 'Column': column, 'item_list': in_list}
+        elif searchtype == 'matdesc':
+            command="""select DISTINCT 
+            %(database)s.Material, 
+            %(database)s.\"Material Description\" as matdesc
+            FROM %(database)s 
+            WHERE %(database)s.%(Column)s like '%(item_list)s'
+            ORDER BY %(database)s.Material""" % {'database': db, 'Column': column, 'item_list': in_list}
 
         return command
         
@@ -96,34 +95,19 @@ class PartUtils:
             self.drawingsdb[item] = filename
             
             
-    def runquery(self, parts, like = False, column = 'Item'):
+    def runquery(self, parts, searchtype = 'bom', column = 'Item'):
          """Runs an SQL query on the Syteline database"""
          
          cursor = self.uksytelineconnection.cursor()
-         cursor.execute(self.query(self.ukCurrentMaterialsdb, parts, like, column))
+         cursor.execute(self.query(self.ukCurrentMaterialsdb, parts, searchtype, column))
          results = [row for row in cursor]
          
          if self.include_ireland_data == True:
              cursor = self.iesytelineconnection.cursor()
-             cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, like, column))
+             cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, searchtype, column))
              results += [row for row in cursor]
     
          return results
-         
-         
-    def runpartsquery(self, parts, like = True, column = 'Material'):
-        """Runs an SQL query on the Syteline database"""
- 
-        cursor = self.uksytelineconnection.cursor()
-        cursor.execute(self.partsquery(self.ukCurrentMaterialsdb, parts, like, column))
-        results = [row for row in cursor]
-         
-        if self.include_ireland_data == True:
-            cursor = self.iesytelineconnection.cursor()
-            cursor.execute(self.partsquery(self.ieCurrentMaterialsdb, parts, like, column))
-            results += [row for row in cursor]
-    
-        return results
         
         
     def clean_number(self, number, decimal_places=2):
@@ -206,7 +190,7 @@ class PartUtils:
             print "No valid part number specified"
             return
             
-        part_desc = self.runquery("%"+self.part_num+"%", like = True)[0].Description
+        part_desc = self.runquery("%"+self.part_num+"%", searchtype = 'itemdesc')[0].Description
             
         self.CreateDictionary(self.part_num)
         
@@ -229,11 +213,11 @@ class PartUtils:
         
         
     def generateWhereUsedmap(self):
-        part_desc = self.runpartsquery("%"+self.part_num+"%", like = True, column = 'Material')[0].matdesc
+        part_desc = self.runquery("%"+self.part_num+"%", searchtype = 'matdesc', column = 'Material')[0].matdesc
         if len(part_desc) == 0:
             print "No valid part number specified"
             return
-        #part_desc = self.runquery("%"+self.part_num+"%", like = True)[0].Description
+        #part_desc = self.runquery("%"+self.part_num+"%", searchtype = 'itemdesc')[0].Description
         
         if self.include_drawings == True:
             self.CreateDrawingsDB()
@@ -248,7 +232,7 @@ class PartUtils:
         mindmap.addtitle(topnodetext)
         mindmap.newgeneration()
         
-        result = self.runquery(self.part_num, like = True, column = 'Material')
+        result = self.runquery(self.part_num, searchtype = 'itemdesc', column = 'Material')
         if result != []:
             for row in result:
                 material = str(row[0])
