@@ -47,31 +47,32 @@ class PartUtils:
             
             
     def findpartslike(self, partnum):
-        result = self.runquery("'%"+partnum+"%'", like = True)
+        result = self.runquery("%"+partnum+"%", like = True, column = 'Item')
+        #result += self.runquery("%"+partnum+"%", like = True, column = 'Material')
         return result
         
         
-    def query(self, db, in_list, like=False):
+    def query(self, db, in_list, like=False, column = 'Item'):
         if like == False:
             command="""select DISTINCT 
-            rvxCurrentMaterials.Item, 
-            rvxCurrentMaterials.Description, 
-            rvxCurrentMaterials.Material, 
-            rvxCurrentMaterials.\"Material Description\" as matdesc, 
-            rvxCurrentMaterials.Quantity 
-            FROM %s 
-            WHERE rvxCurrentMaterials.Item in (%s) AND rvxCurrentMaterials.Material like '_-%%' 
-            ORDER BY rvxCurrentMaterials.Material""" % (db, in_list)
+            %(database)s.Item, 
+            %(database)s.Description, 
+            %(database)s.Material, 
+            %(database)s.\"Material Description\" as matdesc, 
+            %(database)s.Quantity 
+            FROM %(database)s 
+            WHERE %(database)s.Item in (%(item_list)s) AND %(database)s.Material like '_-%%' 
+            ORDER BY %(database)s.Material""" % {'database': db, 'item_list': in_list}
 
             return command
             
         else:
             command="""select DISTINCT 
-            rvxCurrentMaterials.Item, 
-            rvxCurrentMaterials.Description
-            FROM %s 
-            WHERE rvxCurrentMaterials.Item like %s
-            ORDER BY rvxCurrentMaterials.Item""" % (db, in_list)
+            %(database)s.Item, 
+            %(database)s.Description
+            FROM %(database)s 
+            WHERE %(database)s.%(Column)s like '%(item_list)s'
+            ORDER BY %(database)s.Item""" % {'database': db, 'Column': column, 'item_list': in_list}
 
             return command
         
@@ -84,16 +85,16 @@ class PartUtils:
             self.drawingsdb[item] = filename
             
             
-    def runquery(self, parts, like = False):
+    def runquery(self, parts, like = False, column = 'Item'):
          """Runs an SQL query on the Syteline database"""
          
          cursor = self.uksytelineconnection.cursor()
-         cursor.execute(self.query(self.ukCurrentMaterialsdb, parts, like))
+         cursor.execute(self.query(self.ukCurrentMaterialsdb, parts, like, column))
          results = [row for row in cursor]
          
          if self.include_ireland_data == True:
              cursor = self.iesytelineconnection.cursor()
-             cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, like))
+             cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, like, column))
              results += [row for row in cursor]
     
          return results
@@ -179,7 +180,7 @@ class PartUtils:
             print "No valid part number specified"
             return
             
-        part_desc = self.runquery("'%"+self.part_num+"%'", like = True)[0].Description
+        part_desc = self.runquery("%"+self.part_num+"%", like = True)[0].Description
             
         self.CreateDictionary(self.part_num)
         
@@ -192,10 +193,48 @@ class PartUtils:
         date_text = 'As of: %s' % (timenow)
         topnodetext = '%s\n%s' % (part_text, date_text)
     
-        map = MindMap(self.filename)
-        map.addtitle(topnodetext)
+        mindmap = MindMap(self.filename)
+        mindmap.addtitle(topnodetext)
         
-        self.findchildren(self.part_num, map)
+        self.findchildren(self.part_num, mindmap)
         
-        map.fold()
-        map.write()
+        mindmap.fold()
+        mindmap.write()
+        
+        
+    def generateWhereUsedmap(self):
+        part_desc = self.runquery("%"+self.part_num+"%", like = True, column = 'Material')[0].Description
+        if len(part_desc) == 0:
+            print "No valid part number specified"
+            return
+        #part_desc = self.runquery("%"+self.part_num+"%", like = True)[0].Description
+        
+        if self.include_drawings == True:
+            self.CreateDrawingsDB()
+            
+        timeformat = format = "%d-%m-%Y    %H:%M:%S"
+        timenow = datetime.datetime.today().strftime(timeformat)
+        part_text = 'WHERE USED: %s  %s' % (self.part_num, str(part_desc))
+        date_text = 'As of: %s' % (timenow)
+        topnodetext = '%s\n%s' % (part_text, date_text)
+        
+        mindmap = MindMap(self.filename)
+        mindmap.addtitle(topnodetext)
+        mindmap.newgeneration()
+        
+        result = self.runquery(self.part_num, like = True, column = 'Material')
+        if result != []:
+            for row in result:
+                material = str(row[0])
+                materialdesc = str(row[1])
+                line = '%s  %s' % (str(row[0]), materialdesc)
+                mindmap.addsibling(line)
+                if self.drawingsdb.has_key(material):
+                    link = '//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%s' % (self.drawingsdb[material])
+                    mindmap.addlink(link)
+        else:
+            return 'No Parents Found'
+            
+        mindmap.fold()
+        mindmap.write()
+        
