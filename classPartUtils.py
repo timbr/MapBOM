@@ -14,6 +14,7 @@ class PartUtils:
         self.drawingsdb = {}
         
         self.part_num = ''
+        self.filename = 'temp.mm'
         
         self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\Drawings\\*.pdf')
         
@@ -161,7 +162,7 @@ class PartUtils:
                 material = str(row[0])
                 materialdesc = str(self.namedata[material])
                 quant = str(self.clean_number(row[1], 3))
-                line = '%s  %s  %s' % (str(row[0]), materialdesc, quant)
+                line = '%s  %s  %s-off' % (str(row[0]), materialdesc, quant)
                 mindmap.addsibling(line)
                 if self.drawingsdb.has_key(material):
                     link = '//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%s' % (self.drawingsdb[material])
@@ -191,8 +192,7 @@ class PartUtils:
         date_text = 'As of: %s' % (timenow)
         topnodetext = '%s\n%s' % (part_text, date_text)
     
-        outputfile ='temp.mm'
-        map = MindMap(outputfile)
+        map = MindMap(self.filename)
         map.addtitle(topnodetext)
         
         self.findchildren(self.part_num, map)
