@@ -75,6 +75,17 @@ class PartUtils:
             ORDER BY %(database)s.Item""" % {'database': db, 'Column': column, 'item_list': in_list}
 
             return command
+            
+            
+    def partsquery(self, db, in_list, like=True, column = 'Material'):            
+        command="""select DISTINCT 
+        %(database)s.Material, 
+        %(database)s.\"Material Description\" as matdesc
+        FROM %(database)s 
+        WHERE %(database)s.%(Column)s like '%(item_list)s'
+        ORDER BY %(database)s.Material""" % {'database': db, 'Column': column, 'item_list': in_list}
+
+        return command
         
         
     def CreateDrawingsDB(self):
@@ -98,6 +109,21 @@ class PartUtils:
              results += [row for row in cursor]
     
          return results
+         
+         
+    def runpartsquery(self, parts, like = True, column = 'Material'):
+        """Runs an SQL query on the Syteline database"""
+ 
+        cursor = self.uksytelineconnection.cursor()
+        cursor.execute(self.partsquery(self.ukCurrentMaterialsdb, parts, like, column))
+        results = [row for row in cursor]
+         
+        if self.include_ireland_data == True:
+            cursor = self.iesytelineconnection.cursor()
+            cursor.execute(self.partsquery(self.ieCurrentMaterialsdb, parts, like, column))
+            results += [row for row in cursor]
+    
+        return results
         
         
     def clean_number(self, number, decimal_places=2):
@@ -203,7 +229,7 @@ class PartUtils:
         
         
     def generateWhereUsedmap(self):
-        part_desc = self.runquery("%"+self.part_num+"%", like = True, column = 'Material')[0].Description
+        part_desc = self.runpartsquery("%"+self.part_num+"%", like = True, column = 'Material')[0].matdesc
         if len(part_desc) == 0:
             print "No valid part number specified"
             return
