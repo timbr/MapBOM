@@ -13,10 +13,13 @@ class PartUtils:
         self.matdata={}
         self.drawingsdb = {}
         
+        self.ireland_assys=[]
+        
         self.part_num = ''
         self.filename = 'temp.mm'
         
         self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\Drawings\\*.pdf')
+        self.irelandflagpic = 'Ireland-Flag.gif'
         
         self.uksytelineconnection = \
         pyodbc.connect('DRIVER={SQL Server};SERVER=GBSYTELINEDB1;DATABASE=UK_App')
@@ -105,6 +108,8 @@ class PartUtils:
          if self.include_ireland_data == True:
              cursor = self.iesytelineconnection.cursor()
              cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, searchtype, column))
+             for row in cursor:
+                 self.ireland_assys.append(row[0])
              results += [row for row in cursor]
     
          return results
@@ -178,6 +183,8 @@ class PartUtils:
                 if self.drawingsdb.has_key(material):
                     link = '//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%s' % (self.drawingsdb[material])
                     mindmap.addlink(link)
+                if str(row[0]) in self.ireland_assys:
+                    mindmap.addicon('flag')
                 next = self.findchildren(material, mindmap)
                 if next != 'nochild':
                     mindmap.previousgeneration()
