@@ -91,7 +91,7 @@ class PartUtils:
         for filepath in self.drawingfilepaths:
             filename = filepath.split('\\')[-1:][0]
             item = filename[1:15]
-            filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
+            #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
             self.drawingsdb[item] = filename
             
             
