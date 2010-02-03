@@ -87,6 +87,8 @@ if __name__ == '__main__':
             item_num = int(z)
         except:
             sys.exit()
+    else:
+        item_num = 0 # There is only one part that matches
 
     part_num = toplevel[item_num].Item
     part_desc = toplevel[item_num].Description
