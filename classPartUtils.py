@@ -108,9 +108,10 @@ class PartUtils:
          if self.include_ireland_data == True:
              cursor = self.iesytelineconnection.cursor()
              cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, searchtype, column))
-             for row in cursor:
+             ireland_results = [row for row in cursor]
+             for row in ireland_results:
                  self.ireland_assys.append(row[0])
-             results += [row for row in cursor]
+             results += ireland_results
     
          return results
         
