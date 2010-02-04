@@ -18,7 +18,7 @@ class PartUtils:
         self.part_num = ''
         self.filename = 'temp.mm'
         
-        self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\TimBrowning\\Drawings\\*.pdf')
+        self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\MapBom\\Drawings\\*.pdf')
         self.irelandflagpic = 'Ireland-Flag.gif'
         
         self.uksytelineconnection = \
