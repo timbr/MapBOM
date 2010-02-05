@@ -19,6 +19,7 @@ class PartUtils:
         self.filename = 'temp.mm'
         
         self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\MapBom\\Drawings\\*.pdf')
+        self.drawingfilepaths += glob.glob('C:\\Program Files\\MapBom\\Drawings\\*.pdf')
         self.irelandflagpic = 'Ireland-Flag.gif'
         
         self.uksytelineconnection = \
@@ -95,7 +96,7 @@ class PartUtils:
             filename = filepath.split('\\')[-1:][0]
             item = filename[1:15]
             #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
-            self.drawingsdb[item] = filename
+            self.drawingsdb[item] = filepath
             
             
     def runquery(self, parts, searchtype = 'bom', column = 'Item'):
@@ -182,7 +183,7 @@ class PartUtils:
                 line = '%s  %s  %s-off' % (str(row[0]), materialdesc, quant)
                 mindmap.addsibling(line)
                 if self.drawingsdb.has_key(material):
-                    link = '//Sheffield/SPD_Data/Temporary/TimBrowning/Drawings/%s' % (self.drawingsdb[material])
+                    link = '%s' % (self.drawingsdb[material])
                     mindmap.addlink(link)
                 if str(row[0]) in self.ireland_assys:
                     mindmap.addicon('flag')

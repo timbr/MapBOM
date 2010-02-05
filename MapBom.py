@@ -49,7 +49,7 @@ if __name__ == '__main__':
         sys.exit(2)
 
     if  len(args) == 1:
-        outputfile = "BOMmindmap.mm"
+        outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
         part = args[0]
     elif len(args) == 2:
         part = args[0]
@@ -61,7 +61,7 @@ if __name__ == '__main__':
         print "\n"
         print "Enter all or part of the top level assembly number:"
         part = raw_input()
-        outputfile = "BOMmindmap.mm"
+        outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
 
     item = '%' + part + '%'
 
