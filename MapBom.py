@@ -62,11 +62,18 @@ if __name__ == '__main__':
         print "Enter all or part of the top level assembly number:"
         part = raw_input()
         outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
+        
+        include_ireland = False
+        print "Would you like to include Ireland Syteline in the search? (This sometimes results in a large delay) Y/N?"
+        response = raw_input()
+        if response.upper() == "Y" or response.upper() == 'YES':
+            print "\n=====> Including Ireland Syteline data"
+            include_ireland = True
 
     item = '%' + part + '%'
 
     mapbom = PartUtils()
-    mapbom.include_ireland_data = True
+    mapbom.include_ireland_data = include_ireland
     
     toplevel = mapbom.findpartslike(item)
     #toplevel = runquery_uk(ukcommand, item) + runquery_ie(iecommand, item)
