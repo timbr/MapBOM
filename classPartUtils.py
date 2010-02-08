@@ -18,9 +18,6 @@ class PartUtils:
         self.part_num = ''
         self.filename = 'temp.mm'
         
-        self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\MapBom\\Drawings\\*.pdf')
-        self.drawingfilepaths += glob.glob('C:\\Program Files\\MapBom\\Drawings\\*.pdf')
-        
         self.uksytelineconnection = \
         pyodbc.connect('DRIVER={SQL Server};SERVER=GBSYTELINEDB1;DATABASE=UK_App')
         
@@ -91,7 +88,10 @@ class PartUtils:
         
         
     def CreateDrawingsDB(self):
-        for filepath in self.drawingfilepaths:
+        drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\MapBom\\Drawings\\*.pdf')
+        drawingfilepaths += glob.glob('C:\\Program Files\\MapBom\\Drawings\\*.pdf')
+        
+        for filepath in drawingfilepaths:
             filename = filepath.split('\\')[-1:][0]
             item = filename[1:15]
             #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
