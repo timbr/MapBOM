@@ -30,6 +30,7 @@ class PartUtils:
                 
         self.include_ireland_data = True
         self.include_drawings = True
+        self.include_DWGdrawings = False # Note that both drawing options can't be true as the drawingdb will be overwritten
         
         if len(args) > 0: # A partnumber can be given as an argument
             if self.valid_partnumber(args[0]):
@@ -94,6 +95,16 @@ class PartUtils:
         for filepath in drawingfilepaths:
             filename = filepath.split('\\')[-1:][0]
             item = filename[1:15]
+            #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
+            self.drawingsdb[item] = filepath
+            
+            
+    def CreateDWGDrawingsDB(self):
+        DWGdrawings = glob.glob('\\\\Sheffield\\SPD_Data\\_SPD Drawings\\1.1.Issued (DIN)\\*\\*.dwg')
+        
+        for filepath in DWGdrawings:
+            filename = filepath.split('\\')[-1:][0]
+            item = filename[:14]
             #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
             self.drawingsdb[item] = filepath
             
@@ -204,6 +215,9 @@ class PartUtils:
         
         if self.include_drawings == True:
             self.CreateDrawingsDB()
+            
+        if self.include_DWGdrawings == True:
+            self.CreateDWGDrawingsDB()
     
         timeformat = format = "%d-%m-%Y    %H:%M:%S"
         timenow = datetime.datetime.today().strftime(timeformat)
