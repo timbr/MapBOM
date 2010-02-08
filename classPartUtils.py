@@ -20,7 +20,6 @@ class PartUtils:
         
         self.drawingfilepaths = glob.glob('\\\\Sheffield\\SPD_Data\\Temporary\\MapBom\\Drawings\\*.pdf')
         self.drawingfilepaths += glob.glob('C:\\Program Files\\MapBom\\Drawings\\*.pdf')
-        self.irelandflagpic = 'Ireland-Flag.gif'
         
         self.uksytelineconnection = \
         pyodbc.connect('DRIVER={SQL Server};SERVER=GBSYTELINEDB1;DATABASE=UK_App')
