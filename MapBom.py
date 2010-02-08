@@ -64,7 +64,7 @@ if __name__ == '__main__':
         outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
         
         include_ireland = False
-        print "Would you like to include Ireland Syteline in the search? (This sometimes results in a large delay) Y/N?"
+        print "Would you like to include Ireland Syteline in the search?\n(This sometimes results in a large delay)\nY/N?"
         response = raw_input()
         if response.upper() == "Y" or response.upper() == 'YES':
             print "\n=====> Including Ireland Syteline data"
