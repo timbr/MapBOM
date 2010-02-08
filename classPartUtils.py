@@ -30,7 +30,7 @@ class PartUtils:
                 
         self.include_ireland_data = True
         self.include_drawings = True
-        self.include_DWGdrawings = False # Note that both drawing options can't be true as the drawingdb will be overwritten
+        self.include_DWGdrawings = False
         
         if len(args) > 0: # A partnumber can be given as an argument
             if self.valid_partnumber(args[0]):
@@ -213,11 +213,11 @@ class PartUtils:
             
         self.CreateDictionary(self.part_num)
         
-        if self.include_drawings == True:
-            self.CreateDrawingsDB()
-            
         if self.include_DWGdrawings == True:
             self.CreateDWGDrawingsDB()
+        
+        if self.include_drawings == True: # Any existing dwg files will be overwritten in the db if a pdf has the same assy number
+            self.CreateDrawingsDB()
     
         timeformat = format = "%d-%m-%Y    %H:%M:%S"
         timenow = datetime.datetime.today().strftime(timeformat)
