@@ -1,4 +1,4 @@
-a = Analysis([os.path.join(HOMEPATH,'support\\_mountzlib.py'), os.path.join(HOMEPATH,'support\\useUnicode.py'), 'MapBom.py'],
+a = Analysis([os.path.join(HOMEPATH,'support\\_mountzlib.py'), os.path.join(HOMEPATH,'support\\useUnicode.py'), 'MapBom.pyw'],
              pathex=['C:\\Python25\\tim\\mapbomclass'])
 pyz = PYZ(a.pure)
 exe = EXE( pyz,
@@ -8,4 +8,4 @@ exe = EXE( pyz,
           debug=False,
           strip=False,
           upx=False,
-          console=True , icon='mapbom.ico')
+          console=False , icon='mapbom.ico')

@@ -1,8 +1,8 @@
 ('Executable\\MapBom.exe',
- True,
+ False,
  False,
  'mapbom.ico',
  None,
  False,
  False,
- 1265372031)
+ 1265725160)
