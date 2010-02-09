@@ -1,21 +1,24 @@
 #Boa:Frame:Frame1
 
 import wx
+import wx.lib.buttons
 import wx.lib.hyperlink
-from classPartUtils import PartUtils#
+from classPartUtils import PartUtils
+import os
 
 mapbom = PartUtils()
 
 def create(parent):
     return Frame1(parent)
 
-[wxID_FRAME1, wxID_FRAME1BUTTON_OK, wxID_FRAME1CHECKBOX_DWG_DRAWINGS, 
- wxID_FRAME1CHECKBOX_IRISH, wxID_FRAME1CHECKBOX_PDF_DRAWINGS, 
- wxID_FRAME1HYPERLINKCTRL_DWG, wxID_FRAME1HYPERLINKCTRL_IRISH, 
- wxID_FRAME1HYPERLINKCTRL_PDF, wxID_FRAME1LISTCTRL1, wxID_FRAME1STATICBOXBOM, 
- wxID_FRAME1STATICBOXMESSAGES, wxID_FRAME1STATICBOXOPTIONS, 
- wxID_FRAME1TEXTCTRLMESSAGES, wxID_FRAME1TEXTCTRL_PART_NUM, 
-] = [wx.NewId() for _init_ctrls in range(14)]
+[wxID_FRAME1, wxID_FRAME1BUTTON_CREATEBOM, wxID_FRAME1BUTTON_OK, 
+ wxID_FRAME1CHECKBOX_DWG_DRAWINGS, wxID_FRAME1CHECKBOX_IRISH, 
+ wxID_FRAME1CHECKBOX_PDF_DRAWINGS, wxID_FRAME1HYPERLINKCTRL_DWG, 
+ wxID_FRAME1HYPERLINKCTRL_IRISH, wxID_FRAME1HYPERLINKCTRL_PDF, 
+ wxID_FRAME1LISTCTRL1, wxID_FRAME1STATICBOXBOM, wxID_FRAME1STATICBOXMESSAGES, 
+ wxID_FRAME1STATICBOXOPTIONS, wxID_FRAME1TEXTCTRLMESSAGES, 
+ wxID_FRAME1TEXTCTRL_PART_NUM, 
+] = [wx.NewId() for _init_ctrls in range(15)]
 
 class Frame1(wx.Frame):
     def _init_coll_listCtrl1_Columns(self, parent):
@@ -29,10 +32,10 @@ class Frame1(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME1, name='', parent=prnt,
-              pos=wx.Point(488, 258), size=wx.Size(422, 388),
+              pos=wx.Point(462, 265), size=wx.Size(422, 443),
               style=wx.SIMPLE_BORDER | wx.CAPTION | wx.CLOSE_BOX | wx.SYSTEM_MENU,
               title='MapBOM GUI')
-        self.SetClientSize(wx.Size(414, 361))
+        self.SetClientSize(wx.Size(414, 416))
         self.SetBackgroundStyle(wx.BG_STYLE_COLOUR)
         self.SetBackgroundColour(wx.Colour(207, 207, 207))
         self.SetThemeEnabled(False)
@@ -46,28 +49,18 @@ class Frame1(wx.Frame):
               self.OnTextCtrl_part_numTextEnter,
               id=wxID_FRAME1TEXTCTRL_PART_NUM)
 
-        self.staticBoxBOM = wx.StaticBox(id=wxID_FRAME1STATICBOXBOM,
-              label='Part Search', name='staticBoxBOM', parent=self,
-              pos=wx.Point(8, 8), size=wx.Size(400, 232), style=0)
-
         self.button_OK = wx.Button(id=wxID_FRAME1BUTTON_OK, label='OK',
               name='button_OK', parent=self, pos=wx.Point(168, 40),
               size=wx.Size(32, 23), style=0)
         self.button_OK.Bind(wx.EVT_BUTTON, self.OnButton_OKButton,
               id=wxID_FRAME1BUTTON_OK)
 
-        self.checkBox_Irish = wx.CheckBox(id=wxID_FRAME1CHECKBOX_IRISH,
-              label='Search Ireland Syteline', name='checkBox_Irish',
-              parent=self, pos=wx.Point(16, 272), size=wx.Size(128, 13),
-              style=0)
-        self.checkBox_Irish.SetValue(True)
-        self.checkBox_Irish.SetToolTipString('checkBox_Irish')
-        self.checkBox_Irish.Bind(wx.EVT_CHECKBOX, self.OnCheckBox_IrishCheckbox,
-              id=wxID_FRAME1CHECKBOX_IRISH)
-
-        self.staticBoxOptions = wx.StaticBox(id=wxID_FRAME1STATICBOXOPTIONS,
-              label='Options', name='staticBoxOptions', parent=self,
-              pos=wx.Point(8, 248), size=wx.Size(168, 100), style=0)
+        self.button_CreateBOM = wx.Button(id=wxID_FRAME1BUTTON_CREATEBOM,
+              label='Create BOM Mindmap', name='button_CreateBOM', parent=self,
+              pos=wx.Point(272, 248), size=wx.Size(112, 23), style=0)
+        self.button_CreateBOM.Show(False)
+        self.button_CreateBOM.Bind(wx.EVT_BUTTON, self.OnButton_CreateBOMButton,
+              id=wxID_FRAME1BUTTON_CREATEBOM)
 
         self.listCtrl1 = wx.ListCtrl(id=wxID_FRAME1LISTCTRL1, name='listCtrl1',
               parent=self, pos=wx.Point(24, 80), size=wx.Size(368, 144),
@@ -78,46 +71,64 @@ class Frame1(wx.Frame):
         self.listCtrl1.Bind(wx.EVT_LIST_ITEM_ACTIVATED,
               self.OnListCtrl1ListItemActivated, id=wxID_FRAME1LISTCTRL1)
 
+        self.checkBox_Irish = wx.CheckBox(id=wxID_FRAME1CHECKBOX_IRISH,
+              label='Search Ireland Syteline', name='checkBox_Irish',
+              parent=self, pos=wx.Point(16, 328), size=wx.Size(128, 13),
+              style=0)
+        self.checkBox_Irish.SetValue(True)
+        self.checkBox_Irish.SetToolTipString('Search Ireland Syteline')
+        self.checkBox_Irish.Bind(wx.EVT_CHECKBOX, self.OnCheckBox_IrishCheckbox,
+              id=wxID_FRAME1CHECKBOX_IRISH)
+
         self.checkBox_pdf_drawings = wx.CheckBox(id=wxID_FRAME1CHECKBOX_PDF_DRAWINGS,
               label='Add links to pdf drawings', name='checkBox_pdf_drawings',
-              parent=self, pos=wx.Point(16, 296), size=wx.Size(144, 13),
+              parent=self, pos=wx.Point(16, 352), size=wx.Size(144, 13),
               style=0)
         self.checkBox_pdf_drawings.SetValue(True)
-        self.checkBox_pdf_drawings.SetToolTipString('checkBox_pdf_drawings')
+        self.checkBox_pdf_drawings.SetToolTipString('Add links to pdf drawings')
         self.checkBox_pdf_drawings.Bind(wx.EVT_CHECKBOX,
               self.OnCheckBox_pdf_drawingsCheckbox,
               id=wxID_FRAME1CHECKBOX_PDF_DRAWINGS)
 
         self.checkBox_dwg_drawings = wx.CheckBox(id=wxID_FRAME1CHECKBOX_DWG_DRAWINGS,
               label='Add links to dwg drawings', name='checkBox_dwg_drawings',
-              parent=self, pos=wx.Point(16, 320), size=wx.Size(144, 13),
+              parent=self, pos=wx.Point(16, 376), size=wx.Size(144, 13),
               style=0)
         self.checkBox_dwg_drawings.SetValue(False)
+        self.checkBox_dwg_drawings.SetToolTipString('Add links to dwg drawings')
         self.checkBox_dwg_drawings.Bind(wx.EVT_CHECKBOX,
               self.OnCheckBox_dwg_drawingsCheckbox,
               id=wxID_FRAME1CHECKBOX_DWG_DRAWINGS)
 
+        self.staticBoxBOM = wx.StaticBox(id=wxID_FRAME1STATICBOXBOM,
+              label='Part Search', name='staticBoxBOM', parent=self,
+              pos=wx.Point(8, 8), size=wx.Size(400, 232), style=0)
+
+        self.staticBoxOptions = wx.StaticBox(id=wxID_FRAME1STATICBOXOPTIONS,
+              label='Options', name='staticBoxOptions', parent=self,
+              pos=wx.Point(8, 304), size=wx.Size(168, 100), style=0)
+
         self.staticBoxMessages = wx.StaticBox(id=wxID_FRAME1STATICBOXMESSAGES,
               label='Messages', name='staticBoxMessages', parent=self,
-              pos=wx.Point(192, 248), size=wx.Size(216, 100), style=0)
+              pos=wx.Point(192, 304), size=wx.Size(216, 100), style=0)
 
         self.textCtrlMessages = wx.TextCtrl(id=wxID_FRAME1TEXTCTRLMESSAGES,
-              name='textCtrlMessages', parent=self, pos=wx.Point(200, 272),
+              name='textCtrlMessages', parent=self, pos=wx.Point(200, 328),
               size=wx.Size(200, 64), style=wx.TE_MULTILINE, value='')
         self.textCtrlMessages.SetEditable(True)
         self.textCtrlMessages.SetInsertionPoint(2)
 
         self.hyperLinkCtrl_Irish = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_IRISH,
               label='?', name='hyperLinkCtrl_Irish', parent=self,
-              pos=wx.Point(165, 271), size=wx.Size(5, 13), style=0)
+              pos=wx.Point(165, 327), size=wx.Size(5, 13), style=0)
 
         self.hyperLinkCtrl_pdf = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_PDF,
               label='?', name='hyperLinkCtrl_pdf', parent=self,
-              pos=wx.Point(165, 296), size=wx.Size(5, 13), style=0)
+              pos=wx.Point(165, 352), size=wx.Size(5, 13), style=0)
 
         self.hyperLinkCtrl_dwg = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_DWG,
               label='?', name='hyperLinkCtrl_dwg', parent=self,
-              pos=wx.Point(165, 320), size=wx.Size(5, 13), style=0)
+              pos=wx.Point(165, 376), size=wx.Size(5, 13), style=0)
 
     def __init__(self, parent):
         self._init_ctrls(parent)
@@ -134,20 +145,18 @@ class Frame1(wx.Frame):
 
         
     def generateBOMmindmap(self, partnum):
+        self.textCtrlMessages.AppendText('\nCreating BOM Mindmap for %s\n\n' % (partnum))
         mapbom.part_num = partnum
         outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
         mapbom.filename = outputfile
         mapbom.generateBOMmap()
         self.textCtrlMessages.AppendText('\nMindmap created for %s\n\n' % (partnum))
+        os.popen('FreemindPortable.bat ' + outputfile)
         
 
     def OnListCtrl1ListItemActivated(self, event):
         item = self.listCtrl1.GetItemText(self.listCtrl1.GetFocusedItem())
-        self.textCtrlMessages.AppendText('\nCreating BOM Mindmap for %s\n\n' % (item))
-        mapbom.part_num = item
-        outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
-        mapbom.filename = outputfile
-        mapbom.generateBOMmap()
+        self.generateBOMmindmap(item)
 
     def OnCheckBox_pdf_drawingsCheckbox(self, event):
         mapbom.include_drawings = self.checkBox_dwg_drawings.Value
@@ -170,7 +179,7 @@ class Frame1(wx.Frame):
             index = self.listCtrl1.InsertStringItem(i, '')
             self.listCtrl1.SetStringItem(i, 0, row.Item)
             self.listCtrl1.SetStringItem(i, 1, row.Description)
-##            self.listBox1.Append("%s    %s" % (row.Item, row.Description))
+        self.button_CreateBOM.Show(True)
 
     def InitialiseHyperlinks(self):
         self.hyperLinkCtrl_Irish.SetToolTipString("What's this?")
@@ -195,3 +204,11 @@ class Frame1(wx.Frame):
 
     def OnDwgHyperlink(self, event):
         self.textCtrlMessages.AppendText('\nInclude links to dwg files on Sheffield. Mechanical Desktop is required to view these files.\n')
+
+    def OnButton_CreateBOMButton(self, event):
+        print self.listCtrl1.GetFocusedItem()
+        if self.listCtrl1.GetFocusedItem() == -1:
+            self.textCtrlMessages.AppendText('\nNo part has been selected\n\n\n')
+            return
+        item = self.listCtrl1.GetItemText(self.listCtrl1.GetFocusedItem())
+        self.generateBOMmindmap(item)
