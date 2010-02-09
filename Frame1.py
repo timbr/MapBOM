@@ -11,9 +11,9 @@ def create(parent):
 [wxID_FRAME1, wxID_FRAME1BUTTON_OK, wxID_FRAME1CHECKBOX_DWG_DRAWINGS, 
  wxID_FRAME1CHECKBOX_IRISH, wxID_FRAME1CHECKBOX_PDF_DRAWINGS, 
  wxID_FRAME1LISTCTRL1, wxID_FRAME1STATICBOXBOM, wxID_FRAME1STATICBOXMESSAGES, 
- wxID_FRAME1STATICBOXOPTIONS, wxID_FRAME1STATICTEXT1, 
- wxID_FRAME1TEXTCTRLMESSAGES, wxID_FRAME1TEXTCTRL_PART_NUM, 
-] = [wx.NewId() for _init_ctrls in range(12)]
+ wxID_FRAME1STATICBOXOPTIONS, wxID_FRAME1TEXTCTRLMESSAGES, 
+ wxID_FRAME1TEXTCTRL_PART_NUM, 
+] = [wx.NewId() for _init_ctrls in range(11)]
 
 class Frame1(wx.Frame):
     def _init_coll_listCtrl1_Columns(self, parent):
@@ -27,11 +27,12 @@ class Frame1(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME1, name='', parent=prnt,
-              pos=wx.Point(488, 256), size=wx.Size(456, 473),
-              style=wx.DEFAULT_FRAME_STYLE, title='MapBOM GUI')
-        self.SetClientSize(wx.Size(448, 446))
+              pos=wx.Point(488, 256), size=wx.Size(422, 388),
+              style=wx.SIMPLE_BORDER | wx.CAPTION | wx.CLOSE_BOX | wx.SYSTEM_MENU,
+              title='MapBOM GUI')
+        self.SetClientSize(wx.Size(414, 361))
         self.SetBackgroundStyle(wx.BG_STYLE_COLOUR)
-        self.SetBackgroundColour(wx.Colour(192, 192, 192))
+        self.SetBackgroundColour(wx.Colour(207, 207, 207))
         self.SetThemeEnabled(False)
         self.SetIcon(wx.Icon(u'C:/Python25/tim/mapbomclass/mapbom.ico',
               wx.BITMAP_TYPE_ICO))
@@ -42,16 +43,10 @@ class Frame1(wx.Frame):
         self.textCtrl_part_num.Bind(wx.EVT_TEXT_ENTER,
               self.OnTextCtrl_part_numTextEnter,
               id=wxID_FRAME1TEXTCTRL_PART_NUM)
-        self.textCtrl_part_num.Bind(wx.EVT_LEFT_DOWN,
-              self.OnTextCtrl_part_numLeftDown)
-
-        self.staticText1 = wx.StaticText(id=wxID_FRAME1STATICTEXT1, label='',
-              name='staticText1', parent=self, pos=wx.Point(192, 368),
-              size=wx.Size(232, 16), style=0)
 
         self.staticBoxBOM = wx.StaticBox(id=wxID_FRAME1STATICBOXBOM,
               label='Bill Of Materials', name='staticBoxBOM', parent=self,
-              pos=wx.Point(8, 8), size=wx.Size(432, 232), style=0)
+              pos=wx.Point(8, 8), size=wx.Size(400, 232), style=0)
 
         self.button_OK = wx.Button(id=wxID_FRAME1BUTTON_OK, label='OK',
               name='button_OK', parent=self, pos=wx.Point(168, 40),
@@ -70,7 +65,7 @@ class Frame1(wx.Frame):
 
         self.staticBoxOptions = wx.StaticBox(id=wxID_FRAME1STATICBOXOPTIONS,
               label='Options', name='staticBoxOptions', parent=self,
-              pos=wx.Point(16, 248), size=wx.Size(160, 100), style=0)
+              pos=wx.Point(8, 248), size=wx.Size(168, 100), style=0)
 
         self.listCtrl1 = wx.ListCtrl(id=wxID_FRAME1LISTCTRL1, name='listCtrl1',
               parent=self, pos=wx.Point(24, 80), size=wx.Size(368, 144),
@@ -102,12 +97,12 @@ class Frame1(wx.Frame):
 
         self.staticBoxMessages = wx.StaticBox(id=wxID_FRAME1STATICBOXMESSAGES,
               label='Messages', name='staticBoxMessages', parent=self,
-              pos=wx.Point(192, 248), size=wx.Size(248, 100), style=0)
+              pos=wx.Point(192, 248), size=wx.Size(216, 100), style=0)
 
         self.textCtrlMessages = wx.TextCtrl(id=wxID_FRAME1TEXTCTRLMESSAGES,
               name='textCtrlMessages', parent=self, pos=wx.Point(200, 272),
-              size=wx.Size(232, 64), style=0, value='')
-        self.textCtrlMessages.SetEditable(False)
+              size=wx.Size(200, 64), style=wx.TE_MULTILINE, value='')
+        self.textCtrlMessages.SetEditable(True)
         self.textCtrlMessages.SetInsertionPoint(2)
 
     def __init__(self, parent):
@@ -117,27 +112,23 @@ class Frame1(wx.Frame):
         self.FindPart()
 
     def OnButton_OKButton(self, event):
-##        self.staticText1.Label = self.textCtrl_part_num.Value
-        self.textCtrlMessages.AppendText(self.textCtrl_part_num.Value)
-##        self.button_OK.Shown = False
+        self.FindPart()
 
     def OnCheckBox_IrishCheckbox(self, event):
         mapbom.include_ireland_data = self.checkBox_Irish.Value
 
-    def OnTextCtrl_part_numLeftDown(self, event):
-        event.Skip()
         
     def generateBOMmindmap(self, partnum):
         mapbom.part_num = partnum
         outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
         mapbom.filename = outputfile
         mapbom.generateBOMmap()
-        self.textCtrlMessages.AppendText('Mindmap created for %s' % (partnum))
+        self.textCtrlMessages.AppendText('Mindmap created for %s\n\n' % (partnum))
         
 
     def OnListCtrl1ListItemActivated(self, event):
         item = self.listCtrl1.GetItemText(self.listCtrl1.GetFocusedItem())
-        self.textCtrlMessages.AppendText('Creating BOM Mindmap for %s' % (item))
+        self.textCtrlMessages.AppendText('Creating BOM Mindmap for %s\n\n' % (item))
         mapbom.part_num = item
         outputfile = "C:\\Program Files\\MapBom\\BOMmindmap.mm"
         mapbom.filename = outputfile
@@ -150,17 +141,16 @@ class Frame1(wx.Frame):
         mapbom.include_DWGdrawings = self.checkBox_dwg_drawings.Value
 
     def FindPart(self):
-        self.staticText1.Label = ''
         toplevel = mapbom.findpartslike(self.textCtrl_part_num.Value)
         if toplevel == []:
             self.listCtrl1.ClearAll()
             self.listCtrl1.Enable(False)
-            self.textCtrlMessages.AppendText("Part number not found in Syteline")
+            self.textCtrlMessages.AppendText("Part number not found in Syteline\n\n\n")
             return
         if len(toplevel) == 1:
             self.listCtrl1.ClearAll()
             self.listCtrl1.Enable(False)
-            self.textCtrlMessages.AppendText('Creating BOM Mindmap for %s' % (toplevel[0].Item))
+            self.textCtrlMessages.AppendText('Creating BOM Mindmap for %s\n\n' % (toplevel[0].Item))
             self.generateBOMmindmap(toplevel[0].Item)
             return
         self.listCtrl1.Enable(True)
