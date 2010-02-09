@@ -47,7 +47,7 @@ class Frame1(wx.Frame):
               id=wxID_FRAME1TEXTCTRL_PART_NUM)
 
         self.staticBoxBOM = wx.StaticBox(id=wxID_FRAME1STATICBOXBOM,
-              label='Bill Of Materials', name='staticBoxBOM', parent=self,
+              label='Part Search', name='staticBoxBOM', parent=self,
               pos=wx.Point(8, 8), size=wx.Size(400, 232), style=0)
 
         self.button_OK = wx.Button(id=wxID_FRAME1BUTTON_OK, label='OK',
