@@ -162,12 +162,6 @@ class Frame1(wx.Frame):
             self.listCtrl1.Enable(False)
             self.textCtrlMessages.AppendText("\nPart number not found in Syteline\n\n\n")
             return
-        if len(toplevel) == 1:
-            self.listCtrl1.ClearAll()
-            self.listCtrl1.Enable(False)
-            self.textCtrlMessages.AppendText('\nCreating BOM Mindmap for %s\n\n' % (toplevel[0].Item))
-            self.generateBOMmindmap(toplevel[0].Item)
-            return
         self.listCtrl1.Enable(True)
         self.listCtrl1.ClearAll()
         self._init_coll_listCtrl1_Columns(self.listCtrl1)
