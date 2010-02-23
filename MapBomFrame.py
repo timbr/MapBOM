@@ -13,12 +13,13 @@ def create(parent):
 
 [wxID_FRAME1, wxID_FRAME1BUTTON_CREATEBOM, wxID_FRAME1BUTTON_OK, 
  wxID_FRAME1CHECKBOX_DWG_DRAWINGS, wxID_FRAME1CHECKBOX_IRISH, 
- wxID_FRAME1CHECKBOX_PDF_DRAWINGS, wxID_FRAME1HYPERLINKCTRL_DWG, 
- wxID_FRAME1HYPERLINKCTRL_IRISH, wxID_FRAME1HYPERLINKCTRL_PDF, 
+ wxID_FRAME1CHECKBOX_PART_COSTS, wxID_FRAME1CHECKBOX_PDF_DRAWINGS, 
+ wxID_FRAME1HYPERLINKCTRL_DWG, wxID_FRAME1HYPERLINKCTRL_IRISH, 
+ wxID_FRAME1HYPERLINKCTRL_PART_COST, wxID_FRAME1HYPERLINKCTRL_PDF, 
  wxID_FRAME1LISTCTRL1, wxID_FRAME1STATICBOXBOM, wxID_FRAME1STATICBOXMESSAGES, 
  wxID_FRAME1STATICBOXOPTIONS, wxID_FRAME1TEXTCTRLMESSAGES, 
  wxID_FRAME1TEXTCTRL_PART_NUM, 
-] = [wx.NewId() for _init_ctrls in range(15)]
+] = [wx.NewId() for _init_ctrls in range(17)]
 
 class Frame1(wx.Frame):
     def _init_coll_listCtrl1_Columns(self, parent):
@@ -32,10 +33,10 @@ class Frame1(wx.Frame):
     def _init_ctrls(self, prnt):
         # generated method, don't edit
         wx.Frame.__init__(self, id=wxID_FRAME1, name='', parent=prnt,
-              pos=wx.Point(462, 265), size=wx.Size(422, 443),
+              pos=wx.Point(462, 265), size=wx.Size(422, 465),
               style=wx.SIMPLE_BORDER | wx.CAPTION | wx.CLOSE_BOX | wx.SYSTEM_MENU,
               title='MapBOM GUI')
-        self.SetClientSize(wx.Size(414, 416))
+        self.SetClientSize(wx.Size(414, 438))
         self.SetBackgroundStyle(wx.BG_STYLE_COLOUR)
         self.SetBackgroundColour(wx.Colour(212, 208, 200))
         self.SetThemeEnabled(False)
@@ -82,7 +83,7 @@ class Frame1(wx.Frame):
               label='Add links to pdf drawings', name='checkBox_pdf_drawings',
               parent=self, pos=wx.Point(16, 352), size=wx.Size(144, 13),
               style=0)
-        self.checkBox_pdf_drawings.SetValue(True)
+        self.checkBox_pdf_drawings.SetValue(False)
         self.checkBox_pdf_drawings.SetToolTipString('Add links to pdf drawings')
         self.checkBox_pdf_drawings.Bind(wx.EVT_CHECKBOX,
               self.OnCheckBox_pdf_drawingsCheckbox,
@@ -104,7 +105,7 @@ class Frame1(wx.Frame):
 
         self.staticBoxOptions = wx.StaticBox(id=wxID_FRAME1STATICBOXOPTIONS,
               label='Options', name='staticBoxOptions', parent=self,
-              pos=wx.Point(8, 304), size=wx.Size(168, 100), style=0)
+              pos=wx.Point(8, 304), size=wx.Size(168, 128), style=0)
 
         self.staticBoxMessages = wx.StaticBox(id=wxID_FRAME1STATICBOXMESSAGES,
               label='Messages', name='staticBoxMessages', parent=self,
@@ -127,6 +128,17 @@ class Frame1(wx.Frame):
         self.hyperLinkCtrl_dwg = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_DWG,
               label='?', name='hyperLinkCtrl_dwg', parent=self,
               pos=wx.Point(165, 376), size=wx.Size(5, 13), style=0)
+
+        self.checkBox_part_costs = wx.CheckBox(id=wxID_FRAME1CHECKBOX_PART_COSTS,
+              label='Display Part Costs', name='checkBox_part_costs',
+              parent=self, pos=wx.Point(16, 400), size=wx.Size(112, 16),
+              style=0)
+        self.checkBox_part_costs.SetValue(True)
+        self.checkBox_part_costs.SetToolTipString('Display parts costs')
+
+        self.hyperLinkCtrl_part_cost = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_PART_COST,
+              label='?', name='hyperLinkCtrl_part_cost', parent=self,
+              pos=wx.Point(165, 400), size=wx.Size(5, 13), style=0)
 
     def __init__(self, parent):
         from MapBom import __VERSION__
@@ -199,6 +211,10 @@ class Frame1(wx.Frame):
         self.hyperLinkCtrl_dwg.AutoBrowse(False)
         self.hyperLinkCtrl_dwg.DoPopup(False)
         self.hyperLinkCtrl_dwg.Bind(wx.lib.hyperlink.EVT_HYPERLINK_LEFT, self.OnDwgHyperlink, id=wxID_FRAME1HYPERLINKCTRL_DWG)
+        self.hyperLinkCtrl_part_cost.SetToolTipString("What's this?")
+        self.hyperLinkCtrl_part_cost.AutoBrowse(False)
+        self.hyperLinkCtrl_part_cost.DoPopup(False)
+        self.hyperLinkCtrl_part_cost.Bind(wx.lib.hyperlink.EVT_HYPERLINK_LEFT, self.OnPartCostHyperlink, id=wxID_FRAME1HYPERLINKCTRL_PART_COST)
         
         
     def OnIrishHyperlink(self, event):
@@ -209,6 +225,10 @@ class Frame1(wx.Frame):
 
     def OnDwgHyperlink(self, event):
         self.textCtrlMessages.AppendText('\nInclude links to dwg files on Sheffield. Mechanical Desktop is required to view these files.\n')
+
+    def OnPartCostHyperlink(self, event):
+        self.textCtrlMessages.AppendText('\nInclude part costs. The cost is mulitplied up by the number of parts used.\n')
+
 
     def OnButton_CreateBOMButton(self, event):
         print self.listCtrl1.GetFocusedItem()
