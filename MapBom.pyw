@@ -2,14 +2,15 @@
 #Boa:App:BoaApp
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.3
+# Version:     0.3.0.1
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
-# Created:     09/02/2010
+# Created:     23/02/2010
 #
-#Changes      0.3: GUI version!!
+#Changes      0.3.0.1: Fixed bug with pdf drawings checkbox. This was found when releasing 0.3.1 (not for release)
+#             0.3: GUI version!!
 #             0.2.7: PartUtils class written and used to generate BOM map (includes Ireland Syteline data)
 #             0.2.6: Now uses MindMap class to write FreeMind xml file
 #             0.2.5: Added links to drawings on Sheffield
@@ -23,7 +24,7 @@
 import wx
 import MapBomFrame
 
-__VERSION__ = '0.3'
+__VERSION__ = '0.3.0.1'
 
 
 modules ={u'MapBomFrame': [1, 'Main frame of Application', u'MapBomFrame.py']}
