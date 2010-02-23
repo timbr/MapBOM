@@ -62,7 +62,7 @@ class PartUtils:
             %(database)s.Item, 
             %(database)s.Description, 
             %(database)s.Material, 
-            %(database)s.\"Material Cost\" as matcost,
+            %(database)s.Cost as matcost,
             %(database)s.\"Material Description\" as matdesc, 
             %(database)s.Quantity 
             FROM %(database)s 
