@@ -179,7 +179,7 @@ class Frame1(wx.Frame):
         self.generateBOMmindmap(item)
 
     def OnCheckBox_pdf_drawingsCheckbox(self, event):
-        mapbom.include_drawings = self.checkBox_dwg_drawings.Value
+        mapbom.include_drawings = self.checkBox_pdf_drawings.Value
 
     def OnCheckBox_dwg_drawingsCheckbox(self, event):
         mapbom.include_DWGdrawings = self.checkBox_dwg_drawings.Value
