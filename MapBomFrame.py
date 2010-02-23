@@ -230,7 +230,7 @@ class Frame1(wx.Frame):
         self.textCtrlMessages.AppendText('\nInclude links to dwg files on Sheffield. Mechanical Desktop is required to view these files.\n')
 
     def OnPartCostHyperlink(self, event):
-        self.textCtrlMessages.AppendText('\nInclude part costs. The cost is mulitplied up by the number of parts used.\n')
+        self.textCtrlMessages.AppendText('\nInclude part costs. The cost is multiplied up by the number of parts used.\n')
 
 
     def OnButton_CreateBOMButton(self, event):
