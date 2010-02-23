@@ -3,8 +3,8 @@
 
 
 [Setup]
-AppName=MapBom GUI v0.3
-AppVerName=MapBom GUI version 0.3
+AppName=MapBom GUI v0.3.1
+AppVerName=MapBom GUI version 0.3.1
 DefaultDirName={pf}\MapBom
 ;DefaultGroupName=MapBom
 UninstallDisplayIcon={app}\MapBom.exe
@@ -14,8 +14,8 @@ OutputDir=Installer
 
 [Files]
 Source: MapBom.exe; DestDir: {app}
-Source: MapBom_v0_3.lnk; DestDir: {commondesktop}
-Source: MapBom_v0_3.lnk; DestDir: {commonprograms}
+Source: MapBom_v0_3_1.lnk; DestDir: {commondesktop}
+Source: MapBom_v0_3_1.lnk; DestDir: {commonprograms}
 Source: FreemindPortable.bat; DestDir: {app}
 Source: mapbom.ico; DestDir: {app}
 Source: Data\*; DestDir: {app}\Data\; Flags: recursesubdirs
