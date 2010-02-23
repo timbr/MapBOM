@@ -135,6 +135,9 @@ class Frame1(wx.Frame):
               style=0)
         self.checkBox_part_costs.SetValue(True)
         self.checkBox_part_costs.SetToolTipString('Display parts costs')
+        self.checkBox_part_costs.Bind(wx.EVT_CHECKBOX,
+              self.OnCheckBox_part_costsCheckbox,
+              id=wxID_FRAME1CHECKBOX_PART_COSTS)
 
         self.hyperLinkCtrl_part_cost = wx.lib.hyperlink.HyperLinkCtrl(id=wxID_FRAME1HYPERLINKCTRL_PART_COST,
               label='?', name='hyperLinkCtrl_part_cost', parent=self,
@@ -237,3 +240,6 @@ class Frame1(wx.Frame):
             return
         item = self.listCtrl1.GetItemText(self.listCtrl1.GetFocusedItem())
         self.generateBOMmindmap(item)
+
+    def OnCheckBox_part_costsCheckbox(self, event):
+        mapbom.include_part_costs = self.checkBox_part_costs.Value

@@ -26,11 +26,14 @@ class PartUtils:
         
         self.ukCurrentMaterialsdb = 'UK_App.dbo.rvxCurrentMaterials'
         self.ieCurrentMaterialsdb = 'IE_App.dbo.rvxCurrentMaterials'
+        self.ukItemsdb = 'UK_App.dbo.rvxItems'
+        self.ieItemsdb = 'IE_App.dbo.rvxItems'
         
                 
         self.include_ireland_data = True
-        self.include_drawings = True
+        self.include_drawings = False
         self.include_DWGdrawings = False
+        self.include_part_costs = True
         
         if len(args) > 0: # A partnumber can be given as an argument
             if self.valid_partnumber(args[0]):
@@ -59,6 +62,7 @@ class PartUtils:
             %(database)s.Item, 
             %(database)s.Description, 
             %(database)s.Material, 
+            %(database)s.\"Material Cost\" as matcost,
             %(database)s.\"Material Description\" as matdesc, 
             %(database)s.Quantity 
             FROM %(database)s 
@@ -74,18 +78,24 @@ class PartUtils:
             FROM %(database)s 
             WHERE %(database)s.%(Column)s like '%(item_list)s'
             ORDER BY %(database)s.Item""" % {'database': db, 'Column': column, 'item_list': in_list}
-
             return command
             
         elif searchtype == 'matdesc':
             command="""select DISTINCT 
-            %(database)s.Material, 
+            %(database)s.Material,
             %(database)s.\"Material Description\" as matdesc
             FROM %(database)s 
             WHERE %(database)s.%(Column)s like '%(item_list)s'
             ORDER BY %(database)s.Material""" % {'database': db, 'Column': column, 'item_list': in_list}
-
-        return command
+            return command
+        
+        elif searchtype == 'partcost':
+            command="""select 
+            %(database)s.\"Unit Cost\" as itemcost
+            FROM %(database)s 
+            WHERE %(database)s.%(Column)s like '%(item_list)s'
+            ORDER BY %(database)s.Item""" % {'database': db, 'Column': column, 'item_list': in_list}
+            return command
         
         
     def CreateDrawingsDB(self):
@@ -119,6 +129,23 @@ class PartUtils:
          if self.include_ireland_data == True:
              cursor = self.iesytelineconnection.cursor()
              cursor.execute(self.query(self.ieCurrentMaterialsdb, parts, searchtype, column))
+             ireland_results = [row for row in cursor]
+             for row in ireland_results:
+                 self.ireland_assys.append(row[0])
+             results += ireland_results
+    
+         return results
+     
+    def runpartscostquery(self, parts, searchtype = 'partscost', column = 'Item'):
+         """Runs an SQL query on the Syteline database"""
+         
+         cursor = self.uksytelineconnection.cursor()
+         cursor.execute(self.query(self.ukItemsdb, parts, searchtype, column))
+         results = [row for row in cursor]
+         
+         if self.include_ireland_data == True:
+             cursor = self.iesytelineconnection.cursor()
+             cursor.execute(self.query(self.ieItemsdb, parts, searchtype, column))
              ireland_results = [row for row in cursor]
              for row in ireland_results:
                  self.ireland_assys.append(row[0])
@@ -167,9 +194,9 @@ class PartUtils:
                 
             for row in result:
                 if row.Item not in self.matdata:
-                    self.matdata[row.Item] = [[row.Material, row.Quantity]]
+                    self.matdata[row.Item] = [[row.Material, row.Quantity, row.matcost]]
                 else:
-                    self.matdata[row.Item].append([row.Material, row.Quantity])
+                    self.matdata[row.Item].append([row.Material, row.Quantity, row.matcost])
 
         
             children = [child.Material for child in result]
@@ -189,8 +216,13 @@ class PartUtils:
             for row in result:
                 material = str(row[0])
                 materialdesc = str(self.namedata[material])
-                quant = str(self.clean_number(row[1], 3))
-                line = '%s  %s  %s-off' % (str(row[0]), materialdesc, quant)
+                quant = self.clean_number(row[1], 3)
+                cost = self.clean_number(row[2], 2)
+                if self.include_part_costs == True:
+                    totalcost = str(cost * quant)
+                    line = '%s  %s  Cost: %s' % (str(row[0]), materialdesc, totalcost)
+                else:
+                    line = '%s  %s  %s-off' % (str(row[0]), materialdesc, str(quant))
                 mindmap.addsibling(line)
                 if self.drawingsdb.has_key(material):
                     link = '%s' % (self.drawingsdb[material])
@@ -223,7 +255,14 @@ class PartUtils:
         timenow = datetime.datetime.today().strftime(timeformat)
         part_text = '%s  %s' % (self.part_num, str(part_desc))
         date_text = 'As of: %s' % (timenow)
-        topnodetext = '%s\n%s' % (part_text, date_text)
+        getcost = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0].itemcost
+        print getcost
+        cost = str(self.clean_number(getcost, 2))
+        print cost
+        if self.include_part_costs == True:
+            topnodetext = '%s  Cost: %s\n%s' % (part_text, cost, date_text)
+        else:
+            topnodetext = '%s\n%s' % (part_text, date_text)
     
         mindmap = MindMap(self.filename)
         mindmap.addtitle(topnodetext)
