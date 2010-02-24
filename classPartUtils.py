@@ -220,7 +220,7 @@ class PartUtils:
                 cost = self.clean_number(row[2], 0)
                 if self.include_part_costs == True:
                     totalcost = str(cost * quant)
-                    line = '%s  %s %s-off, Cost: %s' % (str(row[0]), materialdesc, str(quant), totalcost)
+                    line = u'%s  %s %s-off, Cost: \xa3%s' % (str(row[0]), materialdesc, str(quant), totalcost)
                 else:
                     line = '%s  %s  %s-off' % (str(row[0]), materialdesc, str(quant))
                 mindmap.addsibling(line)
@@ -260,7 +260,7 @@ class PartUtils:
         cost = str(self.clean_number(getcost, 0))
         print cost
         if self.include_part_costs == True:
-            topnodetext = '%s  Cost: %s\n%s' % (part_text, cost, date_text)
+            topnodetext = u'%s  Cost: \xa3%s\n%s' % (part_text, cost, date_text)
         else:
             topnodetext = '%s\n%s' % (part_text, date_text)
     

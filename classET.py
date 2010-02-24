@@ -152,4 +152,4 @@ class MindMap:
         elif filename != 'temp.mm':
             self.filename = filename
         self.tree = ET.ElementTree(self.root)
-        self.tree.write(self.filename)
+        self.tree.write(self.filename, 'utf-8')
