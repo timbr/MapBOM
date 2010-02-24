@@ -63,6 +63,7 @@ class PartUtils:
             %(database)s.Description, 
             %(database)s.Material, 
             %(database)s.Cost as matcost,
+            %(database)s.\"Labour Cost\" as labourcost,
             %(database)s.\"Material Description\" as matdesc, 
             %(database)s.Quantity 
             FROM %(database)s 
@@ -194,9 +195,9 @@ class PartUtils:
                 
             for row in result:
                 if row.Item not in self.matdata:
-                    self.matdata[row.Item] = [[row.Material, row.Quantity, row.matcost]]
+                    self.matdata[row.Item] = [[row.Material, row.Quantity, row.matcost, row.labourcost]]
                 else:
-                    self.matdata[row.Item].append([row.Material, row.Quantity, row.matcost])
+                    self.matdata[row.Item].append([row.Material, row.Quantity, row.matcost, row.labourcost])
 
         
             children = [child.Material for child in result]
@@ -218,9 +219,11 @@ class PartUtils:
                 materialdesc = str(self.namedata[material])
                 quant = self.clean_number(row[1], 3)
                 cost = self.clean_number(row[2], 0)
+                cost_labour = self.clean_number(row[3], 0)
                 if self.include_part_costs == True:
                     totalcost = str(cost * quant)
-                    line = '%s  %s %s-off, Cost: \xa3%s' % (str(row[0]), materialdesc, str(quant), totalcost)
+                    totallabourcost = str(cost_labour * quant)
+                    line = '%s  %s %s-off, Cost: \xa3%s (labour: \xa3%s)' % (str(row[0]), materialdesc, str(quant), totalcost, totallabourcost)
                 else:
                     line = '%s  %s  %s-off' % (str(row[0]), materialdesc, str(quant))
                 mindmap.addsibling(line)
