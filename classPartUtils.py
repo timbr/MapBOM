@@ -92,7 +92,7 @@ class PartUtils:
         
         elif searchtype == 'partcost':
             command="""select 
-            %(database)s.\"Unit Cost\" as itemcost,
+            %(database)s.\"Cur Unit Cost\" as itemcost,
             %(database)s.\"Cur Accum Labour Run\" as calr,
             %(database)s.\"Cur Accum Labour Setup" as cals
             
@@ -226,13 +226,15 @@ class PartUtils:
                 if self.include_part_costs == True:
                     totalcost = str(cost * quant)
                     totallabourcost = str(cost_labour * quant)
-                    getcalr = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0].calr
-                    calr = str(getcalr * quant)
-                    calr_clean = str(self.clean_number(calr, 0))
-                    getcals = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0].cals
-                    cals = str(getcals * quant)
-                    cals_clean = str(self.clean_number(cals, 0))
-                    line = '%s  %s %s-off, Cost: %s (CALR: %s  CALS: %s)' % (str(row[0]), materialdesc, str(quant), totalcost, calr_clean, cals_clean)
+                    if (material[0] == 'A' or material[0] == 'M') and totalcost != '0':
+                        getcosts= self.runpartscostquery(material, searchtype = 'partcost', column = 'Item')[0]
+                        calr = getcosts.calr * quant
+                        cals = getcosts.cals * quant
+                        calr_plus_cals = calr + cals
+                        calr_plus_cals_clean = str(self.clean_number(calr_plus_cals, 0))
+                    else:
+                        calr_plus_cals_clean = 'NQ'
+                    line = '%s  %s %s-off, Total Cost: %s   Labour (CALR + CALS): %s' % (str(row[0]), materialdesc, str(quant), totalcost, calr_plus_cals_clean)
                     print line
                 else:
                     line = '%s  %s  %s-off' % (str(row[0]), materialdesc, str(quant))
@@ -268,10 +270,14 @@ class PartUtils:
         timenow = datetime.datetime.today().strftime(timeformat)
         part_text = '%s  %s' % (self.part_num, str(part_desc))
         date_text = 'As of: %s' % (timenow)
-        getcost = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0].itemcost
-        cost = str(self.clean_number(getcost, 0))
         if self.include_part_costs == True:
-            topnodetext = '%s  Cost: %s\n%s' % (part_text, cost, date_text)
+            getcosts = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0]
+            cost = str(self.clean_number(getcosts.itemcost, 0))
+            cost_clean = str(self.clean_number(cost, 0))
+            calr_plus_cals = getcosts.calr + getcosts.cals
+            calr_plus_cals_clean = str(self.clean_number(calr_plus_cals, 0))
+            topnodetext = '%s  Total Cost: %s  Labour (CALR + CALS): %s\n%s' % (part_text, cost_clean, calr_plus_cals_clean, date_text)
+            print topnodetext
         else:
             topnodetext = '%s\n%s' % (part_text, date_text)
     
