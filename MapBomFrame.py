@@ -83,7 +83,7 @@ class Frame1(wx.Frame):
               label='Add links to pdf drawings', name='checkBox_pdf_drawings',
               parent=self, pos=wx.Point(16, 352), size=wx.Size(144, 13),
               style=0)
-        self.checkBox_pdf_drawings.SetValue(False)
+        self.checkBox_pdf_drawings.SetValue(True)
         self.checkBox_pdf_drawings.SetToolTipString('Add links to pdf drawings')
         self.checkBox_pdf_drawings.Bind(wx.EVT_CHECKBOX,
               self.OnCheckBox_pdf_drawingsCheckbox,
@@ -133,7 +133,7 @@ class Frame1(wx.Frame):
               label='Display Part Costs', name='checkBox_part_costs',
               parent=self, pos=wx.Point(16, 400), size=wx.Size(112, 16),
               style=0)
-        self.checkBox_part_costs.SetValue(True)
+        self.checkBox_part_costs.SetValue(False)
         self.checkBox_part_costs.SetToolTipString('Display parts costs')
         self.checkBox_part_costs.Bind(wx.EVT_CHECKBOX,
               self.OnCheckBox_part_costsCheckbox,

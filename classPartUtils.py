@@ -32,9 +32,9 @@ class PartUtils:
         
                 
         self.include_ireland_data = True
-        self.include_drawings = False
+        self.include_drawings = True
         self.include_DWGdrawings = False
-        self.include_part_costs = True
+        self.include_part_costs = False
         self.include_WI_Links = False
         
         if len(args) > 0: # A partnumber can be given as an argument
