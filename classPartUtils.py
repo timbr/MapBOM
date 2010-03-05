@@ -64,7 +64,8 @@ class PartUtils:
             %(database)s.Item, 
             %(database)s.Description, 
             %(database)s.Material, 
-            %(database)s.Cost as matcost,
+            %(database)s.Cost as currentcost,
+            %(database)s.\"Labour Cost\" as labourcost, 
             %(database)s.\"Material Description\" as matdesc, 
             %(database)s.Quantity 
             FROM %(database)s 
@@ -93,7 +94,9 @@ class PartUtils:
         
         elif searchtype == 'partcost':
             command="""select 
-            %(database)s.\"Unit Cost\" as itemcost
+            %(database)s.\"Cur Unit Cost\" as itemcost,
+            %(database)s.\"Cur Accum Labour Run\" as calr,
+            %(database)s.\"Cur Accum Labour Setup" as cals
             FROM %(database)s 
             WHERE %(database)s.%(Column)s like '%(item_list)s'
             ORDER BY %(database)s.Item""" % {'database': db, 'Column': column, 'item_list': in_list}
@@ -205,9 +208,9 @@ class PartUtils:
                 
             for row in result:
                 if row.Item not in self.matdata:
-                    self.matdata[row.Item] = [[row.Material, row.Quantity, row.matcost]]
+                    self.matdata[row.Item] = [[row.Material, row.Quantity, row.currentcost, row.labourcost]]
                 else:
-                    self.matdata[row.Item].append([row.Material, row.Quantity, row.matcost])
+                    self.matdata[row.Item].append([row.Material, row.Quantity, row.currentcost, row.labourcost])
 
         
             children = [child.Material for child in result]
@@ -229,9 +232,10 @@ class PartUtils:
                 materialdesc = str(self.namedata[material])
                 quant = self.clean_number(row[1], 3)
                 cost = self.clean_number(row[2], 0)
+                labour = self.clean_number(row[3], 0)
                 if self.include_part_costs == True:
                     totalcost = str(cost * quant)
-                    line = '%s  %s %s-off, Cost: %s' % (str(row[0]), materialdesc, str(quant), totalcost)
+                    line = '%s  %s %s-off, Total Cost: %s (labour: %s)' % (str(row[0]), materialdesc, str(quant), totalcost, labour)
                 else:
                     line = '%s  %s  %s-off' % (str(row[0]), materialdesc, str(quant))
                 mindmap.addsibling(line)
@@ -272,12 +276,12 @@ class PartUtils:
         timenow = datetime.datetime.today().strftime(timeformat)
         part_text = '%s  %s' % (self.part_num, str(part_desc))
         date_text = 'As of: %s' % (timenow)
-        getcost = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0].itemcost
-        print getcost
-        cost = str(self.clean_number(getcost, 0))
-        print cost
+        getcosts = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0]
+        cost_clean = str(self.clean_number(getcosts.itemcost, 0))
+        calr_plus_cals = getcosts.calr + getcosts.cals
+        calr_plus_cals_clean = str(self.clean_number(calr_plus_cals, 0))
         if self.include_part_costs == True:
-            topnodetext = '%s  Cost: %s\n%s' % (part_text, cost, date_text)
+            topnodetext = '%s  Cost: %s (Labour: %s)\n%s' % (part_text, cost_clean, calr_plus_cals_clean, date_text)
         else:
             topnodetext = '%s\n%s' % (part_text, date_text)
     
