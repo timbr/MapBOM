@@ -12,6 +12,7 @@ class PartUtils:
         self.namedata={}
         self.matdata={}
         self.drawingsdb = {}
+        self.WILinksdb = {}
         
         self.ireland_assys=[]
         
@@ -34,6 +35,7 @@ class PartUtils:
         self.include_drawings = False
         self.include_DWGdrawings = False
         self.include_part_costs = True
+        self.include_WI_Links = False
         
         if len(args) > 0: # A partnumber can be given as an argument
             if self.valid_partnumber(args[0]):
@@ -117,6 +119,15 @@ class PartUtils:
             item = filename[:14]
             #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
             self.drawingsdb[item] = filepath
+            
+    def CreateWILinksDB(self):
+        WILinks = glob.glob('\\\\Sheffield\\SPD_Data\\Production\\Production_ Documents\\Work_Instructions\\WI Issued\\*')
+        
+        for filepath in WILinks:
+            filename = filepath.split('\\')[-1:][0]
+            item = filename[:11]
+            #filename = filename.replace('[', '%5B').replace(']', '%5D').replace(' ', '%20').replace('&', '&amp;')
+            self.WILinksdb[item] = filepath
             
             
     def runquery(self, parts, searchtype = 'bom', column = 'Item'):
@@ -227,6 +238,9 @@ class PartUtils:
                 if self.drawingsdb.has_key(material):
                     link = '%s' % (self.drawingsdb[material])
                     mindmap.addlink(link)
+                if self.WILinksdb.has_key(material):
+                    link = '%s' % (self.WILinksdb[material])
+                    mindmap.addlink(link)
                 if str(row[0]) in self.ireland_assys:
                     mindmap.addicon('flag')
                 next = self.findchildren(material, mindmap)
@@ -250,6 +264,9 @@ class PartUtils:
         
         if self.include_drawings == True: # Any existing dwg files will be overwritten in the db if a pdf has the same assy number
             self.CreateDrawingsDB()
+            
+        if self.include_WI_Links == True:
+            self.CreateWILinksDB()
     
         timeformat = format = "%d-%m-%Y    %H:%M:%S"
         timenow = datetime.datetime.today().strftime(timeformat)
