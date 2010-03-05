@@ -66,7 +66,7 @@ class PartUtils:
             %(database)s.\"Material Description\" as matdesc, 
             %(database)s.Quantity 
             FROM %(database)s 
-            WHERE %(database)s.Item in (%(item_list)s) AND %(database)s.Material like '_-%%' 
+            WHERE %(database)s.Item in (%(item_list)s) AND %(database)s.Material not like 'R-%%' 
             ORDER BY %(database)s.Material""" % {'database': db, 'item_list': in_list}
 
             return command
