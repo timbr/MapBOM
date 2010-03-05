@@ -35,7 +35,7 @@ class PartUtils:
         self.include_drawings = True
         self.include_DWGdrawings = False
         self.include_part_costs = False
-        self.include_WI_Links = False
+        self.include_WI_Links = True
         
         if len(args) > 0: # A partnumber can be given as an argument
             if self.valid_partnumber(args[0]):
