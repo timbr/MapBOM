@@ -153,6 +153,24 @@ class Frame1(wx.Frame):
         self.SetIcons(ib)
         
         self.InitialiseHyperlinks()
+        self.init_checkboxes()
+    
+    def init_checkboxes(self):
+        try:
+            f = open('checkboxsettings.dat', 'rb')
+            settings = f.read().split()
+            self.checkBox_Irish.SetValue(bool(int(settings[1])))
+            mapbom.include_ireland_data = bool(int(settings[1]))
+            self.checkBox_pdf_drawings.SetValue(bool(int(settings[3])))
+            mapbom.include_drawings = bool(int(settings[3]))
+            self.checkBox_dwg_drawings.SetValue(bool(int(settings[5])))
+            mapbom.include_DWGdrawings = bool(int(settings[5]))
+            self.checkBox_part_costs.SetValue(bool(int(settings[7])))
+            mapbom.include_part_costs = bool(int(settings[7]))
+            f.close()
+        except:
+            pass
+            
 
     def OnTextCtrl_part_numTextEnter(self, event):
         self.FindPart()
@@ -162,6 +180,7 @@ class Frame1(wx.Frame):
 
     def OnCheckBox_IrishCheckbox(self, event):
         mapbom.include_ireland_data = self.checkBox_Irish.Value
+        self.update_checkbox_settings_file()
 
         
     def generateBOMmindmap(self, partnum):
@@ -180,9 +199,11 @@ class Frame1(wx.Frame):
 
     def OnCheckBox_pdf_drawingsCheckbox(self, event):
         mapbom.include_drawings = self.checkBox_pdf_drawings.Value
+        self.update_checkbox_settings_file()
 
     def OnCheckBox_dwg_drawingsCheckbox(self, event):
         mapbom.include_DWGdrawings = self.checkBox_dwg_drawings.Value
+        self.update_checkbox_settings_file()
 
     def FindPart(self):
         toplevel = mapbom.findpartslike(self.textCtrl_part_num.Value)
@@ -243,3 +264,17 @@ class Frame1(wx.Frame):
 
     def OnCheckBox_part_costsCheckbox(self, event):
         mapbom.include_part_costs = self.checkBox_part_costs.Value
+        self.update_checkbox_settings_file()
+        
+    def update_checkbox_settings_file(self):
+        ZeroOrOne = {'True': '1', 'False': '0'}
+        try:
+            f = open('checkboxsettings.dat', 'wb')
+            f.write('checkBox_Irish ' + ZeroOrOne[str(mapbom.include_ireland_data)] +'\r\n')
+            f.write('checkBox_pdf_drawings ' + ZeroOrOne[str(mapbom.include_drawings)] +'\r\n')
+            f.write('checkBox_dwg_drawings ' + ZeroOrOne[str(mapbom.include_DWGdrawings)] +'\r\n')
+            f.write('checkBox_part_costs ' + ZeroOrOne[str(mapbom.include_part_costs)])
+            f.close()
+        except:
+            pass
+        

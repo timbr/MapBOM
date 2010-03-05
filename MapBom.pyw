@@ -2,13 +2,14 @@
 #Boa:App:BoaApp
 #-------------------------------------------------------------------------------
 # Name:        MapBom.py
-# Version:     0.3.3
+# Version:     0.3.4
 # Purpose:     Creates a Freemind mindmap file which shows a BOM structure
 #
 # Author:      tb126975
 #
 # Created:     05/03/2010
 #
+#             0.3.4: Imroved parts cost reporting. Checkbox status is saved.
 #             0.3.3: Now only excludes R- numbers from database (so includes WIs etc)  
 #             0.3.2: Add quantities back in with cost and round up to nearest pound
 #             0.3.1: Added option to include part costs
@@ -26,7 +27,7 @@
 import wx
 import MapBomFrame
 
-__VERSION__ = '0.3.3'
+__VERSION__ = '0.3.4'
 
 
 modules ={u'MapBomFrame': [1, 'Main frame of Application', u'MapBomFrame.py']}
