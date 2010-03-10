@@ -281,11 +281,12 @@ class PartUtils:
         timenow = datetime.datetime.today().strftime(timeformat)
         part_text = '%s  %s' % (self.part_num, str(part_desc))
         date_text = 'As of: %s' % (timenow)
-        getcosts = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0]
-        cost_clean = str(self.clean_number(getcosts.itemcost, 0))
-        calr_plus_cals = getcosts.calr + getcosts.cals
-        calr_plus_cals_clean = str(self.clean_number(calr_plus_cals, 0))
+    
         if self.include_part_costs == True:
+            getcosts = self.runpartscostquery("%"+self.part_num+"%", searchtype = 'partcost', column = 'Item')[0]
+            cost_clean = str(self.clean_number(getcosts.itemcost, 0))
+            calr_plus_cals = getcosts.calr + getcosts.cals
+            calr_plus_cals_clean = str(self.clean_number(calr_plus_cals, 0))
             topnodetext = '%s  Cost: %s (Labour: %s)\n%s' % (part_text, cost_clean, calr_plus_cals_clean, date_text)
         else:
             topnodetext = '%s\n%s' % (part_text, date_text)

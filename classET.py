@@ -3,8 +3,8 @@ import xml.etree.ElementTree as ET
 
 class MindMap:
     """Build a FreeMind xml file
+    
     Creates an xml tree that can be read by the FreeMind mind-mapping
-
     software."""
 
     def __init__(self, *args):
