@@ -27,6 +27,7 @@ Name: {app}\Drawings\
 
 [UninstallDelete]
 Type: files; Name: {app}\BOMmindmap.mm
+Type: files; Name: {app}\checkboxsettings.dat
 
 [Icons]
 ;Name: {commonprograms}\MapBom_0.3.4; Filename: {app}\MapBom.exe
