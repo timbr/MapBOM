@@ -9,7 +9,7 @@
 #
 # Created:     05/03/2010
 #
-#             0.3.4: Imroved parts cost reporting. Checkbox status is saved.
+#             0.3.4: Improved parts cost reporting. Checkbox status is saved.
 #             0.3.3: Now only excludes R- numbers from database (so includes WIs etc)  
 #             0.3.2: Add quantities back in with cost and round up to nearest pound
 #             0.3.1: Added option to include part costs

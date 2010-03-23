@@ -1,4 +1,10 @@
-MapBom Version 0.3.2
+MapBom Version 0.3.4
+======================
+23/03/2010
+
+* Improved parts cost reporting. Checkbox status is saved.
+
+MapBom Version 0.3.3
 ======================
 05/03/2010
 

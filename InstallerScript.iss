@@ -3,8 +3,8 @@
 
 
 [Setup]
-AppName=MapBom GUI v0.3.3
-AppVerName=MapBom GUI version 0.3.3
+AppName=MapBom GUI v0.3.4
+AppVerName=MapBom GUI version 0.3.4
 DefaultDirName={pf}\MapBom
 ;DefaultGroupName=MapBom
 UninstallDisplayIcon={app}\MapBom.exe
@@ -14,8 +14,8 @@ OutputDir=Installer
 
 [Files]
 Source: MapBom.exe; DestDir: {app}
-Source: MapBom_v0_3_3.lnk; DestDir: {commondesktop}
-Source: MapBom_v0_3_3.lnk; DestDir: {commonprograms}
+Source: MapBom_v0_3_4.lnk; DestDir: {commondesktop}
+Source: MapBom_v0_3_4.lnk; DestDir: {commonprograms}
 Source: FreemindPortable.bat; DestDir: {app}
 Source: mapbom.ico; DestDir: {app}
 Source: Data\*; DestDir: {app}\Data\; Flags: recursesubdirs
@@ -29,7 +29,7 @@ Name: {app}\Drawings\
 Type: files; Name: {app}\BOMmindmap.mm
 
 [Icons]
-;Name: {commonprograms}\MapBom_0.3.3; Filename: {app}\MapBom.exe
-;Name: {commondesktop}\MapBom_0.3.3; Filename: {app}\MapBom.exe
+;Name: {commonprograms}\MapBom_0.3.4; Filename: {app}\MapBom.exe
+;Name: {commondesktop}\MapBom_0.3.4; Filename: {app}\MapBom.exe
 ;
 ;Note that the shortcuts created don't specify where the program is run, so the Freemind starter won't work...
