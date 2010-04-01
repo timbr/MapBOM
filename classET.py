@@ -86,8 +86,16 @@ class MindMap:
             self.addchild(text)
         else:
             self.addnode(self.current_element[parent], text) # add a sibling to current element
+            
+            
+    def appendtext(self, text):
+        """Appends text to the current node"""
+        
+        last_in_list = -1 # position of current element in current_element list
+        existing_text = self.current_element[last_in_list].get('TEXT')
+        self.current_element[last_in_list].set('TEXT', existing_text + text)
 
-
+        
     def addlink(self, link):
         """Appends a URL link to the node"""
         
@@ -103,6 +111,14 @@ class MindMap:
             iconname = "messagebox_warning"
         icon = ET.SubElement(self.current_element[last_in_list], 'icon')
         icon.set('BUILTIN', iconname)
+        
+        
+    def addimage(self, imagename):
+        """Appends an image in front of any text"""
+        
+        last_in_list = -1 # position of current element in current_element list
+        existing_text = self.current_element[last_in_list].get('TEXT')
+        self.current_element[last_in_list].set('TEXT', "<html><img src='" + imagename + "'>&nbsp;&nbsp;" + existing_text)
 
 
     def newgeneration(self):
