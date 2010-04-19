@@ -198,7 +198,7 @@ class PartUtils:
             return number.quantize(decplaces)
             
             
-    def CreateDictionary(self, part):
+    def CreateDictionary(self, part):    
         if part[-1] != "'" and part[:1] != "'":
             part = "'" + part + "'" # The part number needs to be in inverted commas for the SQL query
 
@@ -265,7 +265,9 @@ class PartUtils:
             return
             
         part_desc = self.runquery("%"+self.part_num+"%", searchtype = 'itemdesc')[0].Description
-            
+        
+        self.namedata.clear() # Clear dictionaries of previous entries to prevent duplication
+        self.matdata.clear()    
         self.CreateDictionary(self.part_num)
         
         if self.include_DWGdrawings == True:
